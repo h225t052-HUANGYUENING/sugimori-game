@@ -1,20 +1,539 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>トーク — 高城真紀</title><style>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>トーク — 高城真紀</title>
+
+<style>
 :root{
-  --ink:#1d2733;--muted:#657385;--line:#d8dee8;--bg:#f3f6f9;--card:#fff;
-  --blue:#315f8f;--green:#0b6b4b;--red:#8b2635;--cream:#f8f4e8;--shadow:0 12px 30px rgba(24,38,56,.08);
+  --green:#06c755;
+  --bg:#dfe9f3;
+  --text:#1f2328;
+  --bubble-left:#ffffff;
+  --bubble-right:#9de88f;
+  --line:#d7dde5;
 }
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;line-height:1.75}
-a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
-.top{height:48px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5}
-.top .brand{font-weight:700;color:#21334a;letter-spacing:.04em}.top .back{font-size:13px;color:#66758a}
-.wrap{max-width:920px;margin:28px auto;padding:0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px;margin:18px 0}
-.kicker{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-h1{font-size:28px;line-height:1.3;margin:0 0 12px} h2{font-size:20px;margin:24px 0 8px}
-p{margin:9px 0}.muted{color:var(--muted);font-size:13px}.small{font-size:12px;color:var(--muted)}
-.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;color:#5a6878;background:#fbfcfd;margin:3px}
-.keyword{font-weight:700;color:#8a4b00;border-bottom:1px dotted #b88a39}.btn{display:inline-block;background:#24384f;color:#fff;border-radius:10px;padding:10px 15px;margin:6px 6px 0 0}
-.btn:hover{text-decoration:none;background:#172739}.danger{color:var(--red);font-weight:700}.notice{background:#fff8dd;border-left:4px solid #d0a52e;padding:12px 14px;border-radius:8px;margin:12px 0}.doc{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;background:#fff;border:1px solid #d7d0bf;padding:22px;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.footer{margin:32px auto 20px;text-align:center;font-size:12px;color:#8995a3}
-input,button{font:inherit} .searchline{display:flex;gap:8px;margin:14px 0}.searchline input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}.searchline button{border:0;border-radius:10px;background:#315f8f;color:#fff;padding:10px 16px;cursor:pointer}.result{border-left:3px solid #6d8fb1;padding:10px 0 10px 14px;margin:12px 0;background:#fff}.result .url{font-size:12px;color:#177245}.result a{font-size:17px;font-weight:650}
-@media(max-width:650px){.wrap{margin:18px auto}.card{padding:18px}h1{font-size:23px}.searchline{flex-direction:column}.top{padding:0 14px}}
- body{background:#e8edf3}.chat{max-width:680px;margin:26px auto;padding:18px}.bubble{background:#fff;border-radius:18px;padding:12px 14px;margin:12px 0;max-width:78%;box-shadow:0 1px 3px rgba(0,0,0,.06)}.me{margin-left:auto;background:#dcecff}.overlay{display:none;position:fixed;inset:0;background:#000;color:#e8e8e8;align-items:center;justify-content:center;text-align:center;padding:30px;font-size:20px;line-height:1.8}</style></head><body onclick="showFinal()"><div class="top"><a class="back" href="takashiro_profile.html">← 戻る</a><div class="brand">高城真紀</div></div><div class="chat"><div class="bubble">申請を確認しました。あなたは、遥の友人ですか。</div><div class="bubble me">はい。彼女を探しています。</div><div class="bubble">今すぐ杉守村には戻らないでください。証拠を送ってください。</div><p class="muted">画面をクリックして続ける</p></div><div id="ov" class="overlay">若い人、私は遥の祖母です。<br>少し話してもいいですか？</div><script>function showFinal(){document.getElementById('ov').style.display='flex';}</script></body></html>
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:#f2f4f7;
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.phone{
+  width:min(430px,100%);
+  min-height:100vh;
+  margin:0 auto;
+  background:var(--bg);
+  box-shadow:0 0 28px rgba(0,0,0,.14);
+  display:flex;
+  flex-direction:column;
+}
+
+.header{
+  min-height:68px;
+  background:#27323d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:9px 14px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.back{
+  font-size:20px;
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  opacity:.95;
+}
+
+.back:hover{
+  background:rgba(255,255,255,.12);
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 0 0 2px rgba(255,255,255,.18);
+  flex-shrink:0;
+}
+
+.avatar img,
+.mini-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+.info{
+  min-width:0;
+  flex:1;
+}
+
+.name{
+  font-weight:700;
+  font-size:15px;
+  line-height:1.2;
+}
+
+.status{
+  font-size:11px;
+  color:rgba(255,255,255,.72);
+  margin-top:3px;
+}
+
+.menu{
+  font-size:22px;
+  color:rgba(255,255,255,.75);
+  padding:0 4px;
+}
+
+.chat{
+  flex:1;
+  padding:18px 12px 20px;
+  background:
+    linear-gradient(rgba(220,231,242,.88),rgba(220,231,242,.88)),
+    repeating-linear-gradient(45deg,transparent,transparent 16px,rgba(255,255,255,.22) 16px,rgba(255,255,255,.22) 17px);
+}
+
+.day{
+  text-align:center;
+  margin:10px 0 18px;
+}
+
+.day span{
+  display:inline-block;
+  background:rgba(86,101,116,.22);
+  color:#fff;
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:999px;
+}
+
+.system{
+  text-align:center;
+  color:#778491;
+  font-size:12px;
+  margin:14px auto;
+  max-width:88%;
+  line-height:1.7;
+}
+
+.system span{
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(180,190,200,.58);
+  border-radius:999px;
+  padding:6px 12px;
+  display:inline-block;
+}
+
+.row{
+  display:flex;
+  margin:8px 0;
+  gap:7px;
+  align-items:flex-end;
+}
+
+.row.right{
+  justify-content:flex-end;
+}
+
+.mini-avatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:#fff;
+  overflow:hidden;
+  flex-shrink:0;
+}
+
+.bubble{
+  max-width:74%;
+  padding:9px 12px;
+  border-radius:17px;
+  line-height:1.55;
+  font-size:14px;
+  position:relative;
+  word-break:break-word;
+  box-shadow:0 1px 1px rgba(0,0,0,.04);
+}
+
+.left .bubble{
+  background:var(--bubble-left);
+  border-bottom-left-radius:5px;
+}
+
+.right .bubble{
+  background:var(--bubble-right);
+  border-bottom-right-radius:5px;
+}
+
+.meta{
+  font-size:10px;
+  color:#65717d;
+  margin:0 3px 2px;
+  white-space:nowrap;
+}
+
+.read{
+  display:block;
+  text-align:right;
+  font-size:10px;
+  color:#65717d;
+  line-height:1.1;
+}
+
+.important{
+  border-left:3px solid #8b2635;
+  padding-left:10px;
+}
+
+.hint{
+  text-align:center;
+  font-size:11px;
+  color:#6d7b88;
+  margin:20px 0 0;
+  cursor:pointer;
+}
+
+.hint span{
+  display:inline-block;
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(180,190,200,.55);
+  border-radius:999px;
+  padding:7px 14px;
+}
+
+.inputbar{
+  background:#f7f8fa;
+  border-top:1px solid var(--line);
+  padding:10px 10px 14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.input-icon{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#e8ecef;
+  color:#7b8794;
+  font-size:15px;
+  flex-shrink:0;
+}
+
+.draft{
+  flex:1;
+  min-height:38px;
+  background:#fff;
+  border:1px solid #dde2e8;
+  border-radius:20px;
+  padding:8px 13px;
+  color:#9aa3ad;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+}
+
+.send{
+  border:0;
+  background:#d9dee5;
+  color:#8b96a3;
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:700;
+}
+
+.footer{
+  padding:14px 16px 18px;
+  text-align:center;
+  font-size:11px;
+  line-height:1.7;
+  color:#8a96a3;
+  background:#f7f8fa;
+}
+
+.modal-mask{
+  position:fixed;
+  inset:0;
+  background:rgba(17,24,39,.34);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99;
+  padding:20px;
+}
+
+.modal-mask.show{
+  display:flex;
+}
+
+.modal{
+  width:min(360px,100%);
+  background:#fff;
+  border-radius:22px;
+  padding:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
+  text-align:center;
+}
+
+.modal-title{
+  font-size:17px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.modal-text{
+  color:#2f3842;
+  font-size:14px;
+  line-height:1.8;
+  margin-bottom:16px;
+  white-space:pre-line;
+}
+
+.modal-buttons{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.modal-btn{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:11px 12px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.modal-btn.primary{
+  background:var(--green);
+  color:#fff;
+}
+
+.modal-btn.option{
+  background:#eef2f5;
+  color:#2f3842;
+  text-align:left;
+  line-height:1.55;
+}
+
+.modal-btn.option:hover{
+  background:#e2e8ee;
+}
+
+.modal-btn.option.good{
+  background:#e9f7ef;
+  color:#1f5f3d;
+}
+
+@media(max-width:480px){
+  .phone{
+    box-shadow:none;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="phone">
+
+  <header class="header">
+    <a class="back" href="takashiro_profile.html">‹</a>
+    <div class="avatar">
+      <img src="maki_eagle.png" alt="高城真紀">
+    </div>
+    <div class="info">
+      <div class="name">高城 真紀</div>
+      <div class="status">オンライン</div>
+    </div>
+    <div class="menu">⋯</div>
+  </header>
+
+  <main class="chat">
+
+    <div class="day"><span>今日</span></div>
+
+    <div class="system">
+      <span>高城真紀が友だち申請を承認しました</span>
+    </div>
+
+    <div class="row right">
+      <div class="meta">
+        <span class="read">既読</span>
+        14:18
+      </div>
+      <div class="bubble">
+        遥が消えました。私は遥の友人です。今、杉守村で遥を探しています。お願いです、話を聞いてください。
+      </div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar">
+        <img src="maki_eagle.png" alt="高城真紀">
+      </div>
+      <div class="bubble important">
+        読みました。<br>
+        あなた、今どこにいますか。
+      </div>
+      <div class="meta">14:19</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta">
+        <span class="read">既読</span>
+        14:19
+      </div>
+      <div class="bubble">
+        杉守村です。<br>
+        遥が二日前からずっと返事しなくて、電話も出ません。
+      </div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar">
+        <img src="maki_eagle.png" alt="高城真紀">
+      </div>
+      <div class="bubble important">
+        村の人に話しましたか。
+      </div>
+      <div class="meta">14:20</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta">
+        <span class="read">既読</span>
+        14:20
+      </div>
+      <div class="bubble">
+        まだです。<br>
+        でも、山に行けば何か分かるかもしれなくて。
+      </div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar">
+        <img src="maki_eagle.png" alt="高城真紀">
+      </div>
+      <div class="bubble important">
+        行かないで。<br>
+        絶対に一人で山に入らないでください。
+      </div>
+      <div class="meta">14:20</div>
+    </div>
+
+    <div class="hint" onclick="maybeShowModal()">
+      <span>画面をクリックして続行</span>
+    </div>
+
+  </main>
+
+  <div class="inputbar">
+    <div class="input-icon">＋</div>
+    <div class="draft">メッセージを入力</div>
+    <button class="send">送信</button>
+  </div>
+
+  <div class="footer">
+    このゲームは完全なフィクションです。実在の人物・団体・地名・事件などとは一切関係ありません。
+  </div>
+
+</div>
+
+<div class="modal-mask" id="endingModal">
+  <div class="modal">
+    <div class="modal-title" id="modalTitle">杉谷 静</div>
+    <div class="modal-text" id="modalText"></div>
+
+    <div class="modal-buttons" id="modalButtons">
+      <button class="modal-btn primary" onclick="nextShizukaLine()">顔を上げる</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let modalShown = false;
+let shizukaIndex = 0;
+
+const fromMakiRoute = true;
+
+const shizukaLines = [
+  "若い人、少し話してもいいですか。",
+  "私は遥の祖母、杉谷 静です。",
+  "あの子は……杉鳴様に呼ばれたんです。"
+];
+
+function maybeShowModal(){
+  if(modalShown) return;
+  modalShown = true;
+  shizukaIndex = 0;
+  document.getElementById("endingModal").classList.add("show");
+  showShizukaLine();
+}
+
+function showShizukaLine(){
+  document.getElementById("modalTitle").textContent = "杉谷 静";
+  document.getElementById("modalText").textContent = shizukaLines[shizukaIndex];
+
+  const buttons = document.getElementById("modalButtons");
+
+  if(shizukaIndex < shizukaLines.length - 1){
+    buttons.innerHTML = `
+      <button class="modal-btn primary" onclick="nextShizukaLine()">顔を上げる</button>
+    `;
+  }else{
+    let optionHtml = `
+      <button class="modal-btn option" onclick="location.href='ending_a.html'">
+        調べたことを正直に話す
+      </button>
+      <button class="modal-btn option" onclick="location.href='ending_b.html'">
+        何も言わず、一人で遥を探しに行く
+      </button>
+    `;
+
+    if(fromMakiRoute){
+      optionHtml += `
+        <button class="modal-btn option good" onclick="location.href='ending_c.html'">
+          何も言わず、杉谷静との会話を引き延ばして真紀を待つ
+        </button>
+      `;
+    }
+
+    buttons.innerHTML = optionHtml;
+  }
+}
+
+function nextShizukaLine(){
+  shizukaIndex++;
+  showShizukaLine();
+}
+</script>
+
+</body>
+</html>
