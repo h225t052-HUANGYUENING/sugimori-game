@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>高城真紀 — プロフィール</title>
+<title>個人認証 — 高城真紀</title>
 
 <style>
 :root{
@@ -13,6 +13,7 @@
   --line:#e1e5ea;
   --bg:#f4f6f8;
   --card:#ffffff;
+  --dark:#27323d;
 }
 
 *{
@@ -97,7 +98,7 @@ a{
 }
 
 .cover{
-  height:118px;
+  height:112px;
   background:
     linear-gradient(135deg,rgba(36,52,71,.78),rgba(107,124,143,.48)),
     linear-gradient(135deg,#dfe7ee,#f6efe4);
@@ -105,14 +106,14 @@ a{
 }
 
 .photo{
-  width:92px;
-  height:92px;
+  width:88px;
+  height:88px;
   border-radius:50%;
   border:5px solid #fff;
   background:#fff;
   position:absolute;
   left:18px;
-  bottom:-46px;
+  bottom:-44px;
   overflow:hidden;
   box-shadow:0 2px 10px rgba(0,0,0,.12);
 }
@@ -126,7 +127,7 @@ a{
 }
 
 .profile-body{
-  padding:54px 18px 18px;
+  padding:52px 18px 18px;
 }
 
 .name-row{
@@ -146,7 +147,7 @@ a{
   font-size:13px;
 }
 
-.bio{
+.cert{
   margin-top:12px;
   background:#f8fafc;
   border:1px solid #edf0f3;
@@ -157,134 +158,78 @@ a{
   color:#3f4b57;
 }
 
-.cert{
+.cert strong{
+  color:#1f2328;
+}
+
+.badge{
   display:inline-block;
-  margin-bottom:6px;
   padding:3px 8px;
   border-radius:999px;
   background:#edf3f8;
   color:#4f6478;
   font-size:12px;
   font-weight:700;
+  margin-bottom:6px;
 }
 
-.stats{
-  display:flex;
-  justify-content:space-between;
-  gap:8px;
-  margin-top:14px;
-  padding-top:14px;
-  border-top:1px solid #eef1f4;
-  color:#7b8794;
-  font-size:12px;
-}
-
-.stat strong{
-  color:#1f2328;
-  font-size:14px;
-}
-
-.section-title{
-  margin:18px 4px 8px;
-  color:#8793a0;
-  font-size:12px;
-}
-
-.post{
+.info-list{
+  margin-top:16px;
   background:#fff;
   border:1px solid var(--line);
   border-radius:18px;
-  padding:14px;
-  margin-bottom:12px;
-  box-shadow:0 4px 14px rgba(30,42,56,.04);
-}
-
-.post-head{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:9px;
-}
-
-.mini-avatar{
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  background:#fff;
-  display:grid;
-  place-items:center;
-  flex-shrink:0;
   overflow:hidden;
 }
 
-.mini-avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-}
-
-.post-name{
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:13px 14px;
+  border-bottom:1px solid #eef1f4;
   font-size:13px;
-  font-weight:700;
 }
 
-.post-date{
-  color:#9aa3ad;
-  font-size:11px;
-  margin-top:1px;
+.info-row:last-child{
+  border-bottom:0;
 }
 
-.post-text{
-  font-size:14px;
-  line-height:1.75;
-  color:#2f3842;
+.info-label{
+  color:#7b8794;
+  flex-shrink:0;
 }
 
-.private-note{
-  margin-top:10px;
-  padding:10px 12px;
-  border-radius:12px;
-  background:#f8fafc;
-  border:1px solid #edf0f3;
-  color:#5f6b78;
-  font-size:12px;
-  line-height:1.7;
+.info-value{
+  color:#1f2328;
+  text-align:right;
 }
 
-.action-card{
+.notice{
+  margin-top:16px;
   background:#fff;
   border:1px solid var(--line);
   border-radius:18px;
   padding:14px;
-  margin-top:16px;
+  color:#4f5d6b;
+  font-size:13px;
+  line-height:1.8;
   box-shadow:0 4px 14px rgba(30,42,56,.04);
 }
 
-.btn{
-  display:block;
-  width:100%;
-  text-align:center;
-  border-radius:12px;
-  background:var(--green);
-  color:#fff;
-  padding:12px 14px;
-  font-size:15px;
-  font-weight:700;
+.notice-title{
+  font-weight:800;
+  margin-bottom:4px;
+  color:#27323d;
 }
 
-.btn:hover{
-  filter:brightness(.96);
-  text-decoration:none;
-}
-
-.action-note{
-  margin-top:8px;
-  color:#8a96a3;
-  font-size:11px;
-  text-align:center;
-  line-height:1.6;
+.scroll-space{
+  height:520px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  color:#a0a8b2;
+  font-size:12px;
+  padding-bottom:24px;
 }
 
 .footer{
@@ -293,6 +238,90 @@ a{
   font-size:11px;
   line-height:1.7;
   color:#8a96a3;
+}
+
+.modal-mask{
+  position:fixed;
+  inset:0;
+  background:rgba(17,24,39,.34);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99;
+  padding:20px;
+}
+
+.modal-mask.show{
+  display:flex;
+}
+
+.modal{
+  width:min(360px,100%);
+  background:#fff;
+  border-radius:22px;
+  padding:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
+  text-align:center;
+}
+
+.modal-avatar{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  margin:0 auto 12px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 0 0 5px #f3f5f7;
+}
+
+.modal-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+.modal-title{
+  font-size:17px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+
+.modal-text{
+  color:#5f6b78;
+  font-size:13px;
+  line-height:1.7;
+  margin-bottom:16px;
+}
+
+.modal-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.modal-btn{
+  flex:1;
+  border:0;
+  border-radius:12px;
+  padding:11px 12px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.modal-btn.secondary{
+  background:#e9edf1;
+  color:#5f6b78;
+}
+
+.modal-btn.primary{
+  background:var(--green);
+  color:#fff;
+}
+
+.modal-btn.primary:hover{
+  filter:brightness(.96);
 }
 
 @media(max-width:480px){
@@ -308,12 +337,12 @@ a{
 
   <header class="header">
     <div class="topline">
-      <a class="back" href="takashiro_add.html">← 友だち申請に戻る</a>
-      <div class="appname">Profile</div>
+      <a class="back" href="hidden_truth.html">← 戻る</a>
+      <div class="appname">maki</div>
     </div>
 
-    <div class="title">プロフィール</div>
-    <div class="subtitle">ユーザーの公開プロフィールを表示しています。</div>
+    <div class="title">個人認証</div>
+    <div class="subtitle">認証済みユーザー情報を表示しています。</div>
   </header>
 
   <main class="content">
@@ -331,111 +360,42 @@ a{
           <div class="handle">@maki_t</div>
         </div>
 
-        <div class="bio">
-          <span class="cert">京都市在住 / 警察官</span><br>
-          仕事と暮らしの記録。<br>
-          返信は遅めです。必要な連絡はメッセージでお願いします。
-        </div>
-
-        <div class="stats">
-          <div class="stat"><strong>24</strong><br>フォロー中</div>
-          <div class="stat"><strong>91</strong><br>フォロワー</div>
-          <div class="stat"><strong>非公開</strong><br>連絡先</div>
+        <div class="cert">
+          <span class="badge">認証済みユーザー</span><br>
+          登録名：<strong>高城 真紀</strong><br>
+          ユーザーID：maki
         </div>
       </div>
     </section>
 
-    <div class="section-title">最近の投稿</div>
-
-    <article class="post">
-      <div class="post-head">
-        <div class="mini-avatar">
-          <img src="maki_eagle.png" alt="高城真紀">
-        </div>
-        <div>
-          <div class="post-name">高城 真紀</div>
-          <div class="post-date"><span data-date="-3"></span> 21:08</div>
-        </div>
+    <section class="info-list">
+      <div class="info-row">
+        <div class="info-label">居住地</div>
+        <div class="info-value">京都市</div>
       </div>
-      <div class="post-text">
-        夜勤明け。コンビニのコーヒーでなんとか起きてる。<br>
-        最近、前より眠りが浅い気がする。
+      <div class="info-row">
+        <div class="info-label">職業欄</div>
+        <div class="info-value">非公開</div>
       </div>
-    </article>
-
-    <article class="post">
-      <div class="post-head">
-        <div class="mini-avatar">
-          <img src="maki_eagle.png" alt="高城真紀">
-        </div>
-        <div>
-          <div class="post-name">高城 真紀</div>
-          <div class="post-date"><span data-date="-17"></span> 18:42</div>
-        </div>
+      <div class="info-row">
+        <div class="info-label">過去認証</div>
+        <div class="info-value">警察関係者コードあり</div>
       </div>
-      <div class="post-text">
-        駅前の花屋で小さな花束を買った。<br>
-        こういうものを選ぶ時間だけは、昔から少し落ち着く。
-      </div>
-    </article>
-
-    <article class="post">
-      <div class="post-head">
-        <div class="mini-avatar">
-          <img src="maki_eagle.png" alt="高城真紀">
-        </div>
-        <div>
-          <div class="post-name">高城 真紀</div>
-          <div class="post-date"><span data-date="-45"></span> 23:11</div>
-        </div>
-      </div>
-      <div class="post-text">
-        今でも、あの時一緒に連れて出ればよかったと思うことがある。<br>
-        せめて誕生日だけは忘れないように、毎年贈り物を送っている。
-        <div class="private-note">
-          十年前からは、毎年新しいスマートフォンにしている。<br>
-          直接話せなくても、どこかでつながっていられる気がしたから。
-        </div>
-      </div>
-    </article>
-
-    <article class="post">
-      <div class="post-head">
-        <div class="mini-avatar">
-          <img src="maki_eagle.png" alt="高城真紀">
-        </div>
-        <div>
-          <div class="post-name">高城 真紀</div>
-          <div class="post-date"><span data-date="-82"></span> 07:36</div>
-        </div>
-      </div>
-      <div class="post-text">
-        朝から書類整理。昔の住所を書く欄で、少し手が止まった。<br>
-        もう戻ることはないと思っていた場所ほど、変に覚えている。
-      </div>
-    </article>
-
-    <article class="post">
-      <div class="post-head">
-        <div class="mini-avatar">
-          <img src="maki_eagle.png" alt="高城真紀">
-        </div>
-        <div>
-          <div class="post-name">高城 真紀</div>
-          <div class="post-date"><span data-date="-120"></span> 20:05</div>
-        </div>
-      </div>
-      <div class="post-text">
-        仕事帰りにスーパーへ。冷蔵庫の中身を見ないで買い物すると、同じものばかり増える。
-      </div>
-    </article>
-
-    <section class="action-card">
-      <a class="btn" href="takashiro_chat.html">メッセージを見る</a>
-      <div class="action-note">
-        友だち申請後に表示されたメッセージ履歴です。
+      <div class="info-row">
+        <div class="info-label">連絡先</div>
+        <div class="info-value">友だち追加後に表示</div>
       </div>
     </section>
+
+    <section class="notice">
+      <div class="notice-title">システムメモ</div>
+      このユーザーへ送信された友だち申請は確認待ちです。<br>
+      申請メッセージに緊急性が含まれる場合、相手側に優先通知されることがあります。
+    </section>
+
+    <div class="scroll-space">
+      ページ下部まで表示されました
+    </div>
 
   </main>
 
@@ -445,21 +405,43 @@ a{
 
 </div>
 
+<div class="modal-mask" id="approvedModal">
+  <div class="modal">
+    <div class="modal-avatar">
+      <img src="maki_eagle.png" alt="高城真紀">
+    </div>
+    <div class="modal-title">友だち申請が承認されました</div>
+    <div class="modal-text">
+      高城真紀があなたの友だち申請を承認しました。<br>
+      メッセージを開きますか？
+    </div>
+    <div class="modal-buttons">
+      <button class="modal-btn secondary" onclick="closeModal()">あとで</button>
+      <button class="modal-btn primary" onclick="location.href='takashiro_chat.html'">メッセージを開く</button>
+    </div>
+  </div>
+</div>
+
 <script>
-function formatDate(offsetDays){
-  const date = new Date();
-  date.setDate(date.getDate() + offsetDays);
+let modalShown = false;
 
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, "0");
-  const d = String(date.getDate()).padStart(2, "0");
-
-  return `${y}/${m}/${d}`;
+function showModal(){
+  if(modalShown) return;
+  modalShown = true;
+  document.getElementById('approvedModal').classList.add('show');
 }
 
-document.querySelectorAll("[data-date]").forEach(el=>{
-  const offset = Number(el.dataset.date || 0);
-  el.textContent = formatDate(offset);
+function closeModal(){
+  document.getElementById('approvedModal').classList.remove('show');
+}
+
+window.addEventListener('scroll', ()=>{
+  const scrollPosition = window.innerHeight + window.scrollY;
+  const pageHeight = document.documentElement.scrollHeight;
+
+  if(scrollPosition >= pageHeight - 20){
+    showModal();
+  }
 });
 </script>
 
