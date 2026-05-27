@@ -1,19 +1,482 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>トーク - 杉谷遥</title>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>トーク - 杉谷遥</title>
+
 <style>
-body{margin:0;background:#e7f0e8;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif}.bar{background:#37a05a;color:#fff;padding:10px 16px;display:flex;gap:12px;align-items:center}.bar a{color:#fff;text-decoration:none;font-size:13px}.avatar{width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:23px;cursor:pointer;box-shadow:0 0 0 2px rgba(255,255,255,.7)}.name{font-weight:700}.sub{font-size:12px;opacity:.85}.wrap{max-width:690px;margin:0 auto;padding:18px 14px 34px}.day{text-align:center;color:#7a8b7f;font-size:12px;margin:14px}.msg{max-width:74%;margin:10px 0;padding:10px 14px;border-radius:18px;line-height:1.6;font-size:14px;box-shadow:0 1px 1px rgba(0,0,0,.04)}.left{background:#fff;border-bottom-left-radius:5px}.right{background:#c9f0c5;margin-left:auto;border-bottom-right-radius:5px}.time{font-size:10px;color:#8d9b91;margin-top:4px}.system{text-align:center;color:#87958c;font-size:12px;margin:18px 0}.add{display:block;margin:22px auto;background:#37a05a;color:#fff;border:0;border-radius:999px;padding:11px 22px;font-weight:700;cursor:pointer}.hint{text-align:center;font-size:12px;color:#708276}
-</style></head><body>
-<div class="bar"><a href="index.html">← 検索へ戻る</a><div class="avatar" onclick="location.href='profile_haruka.html'">🌸</div><div><div class="name">杉谷 遥</div><div class="sub">最終ログイン：2026/04/11</div></div></div>
-<div class="wrap">
- <div class="day">2026/04/10</div>
- <div class="msg left">最近ログイン少ないけど、忙しい？<div class="time">08:32</div></div>
- <div class="msg right">うん、ちょっと。学校の体検とか、村の手伝いとか。<div class="time">09:01</div></div>
- <div class="msg left">体調悪いの？<div class="time">09:05</div></div>
- <div class="msg right">体は平気。榊病院で大丈夫って言われたし。<div class="time">09:12</div></div>
- <div class="msg left">ならよかった。村の手伝いって？<div class="time">09:14</div></div>
- <div class="msg right">今年、巡山祭の奉行者になった。半日山を回るだけらしいけど、ちょっと面倒。<div class="time">09:20</div></div>
- <div class="msg left">大丈夫？<div class="time">09:22</div></div>
- <div class="msg right">たぶん。もし急に消えたら、探しに来てくれる？<div class="time">23:47</div></div>
- <div class="system">これ以降のメッセージはありません（最終既読：2026/04/11 23:59）</div>
- <div class="hint">※ 遥のアイコンをクリックするとプロフィールを表示できます。</div>
- <button class="add" onclick="location.href='add_friend.html'">＋ 友だちを追加</button>
-</div></body></html>
+:root{
+  --green:#06c755;
+  --bg:#dfe9f3;
+  --text:#1f2328;
+  --bubble-left:#ffffff;
+  --bubble-right:#9de88f;
+  --line:#d7dde5;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:#f2f4f7;
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.phone{
+  width:min(430px,100%);
+  min-height:100vh;
+  margin:0 auto;
+  background:var(--bg);
+  box-shadow:0 0 28px rgba(0,0,0,.14);
+  display:flex;
+  flex-direction:column;
+}
+
+.header{
+  min-height:68px;
+  background:#27323d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:9px 14px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.back{
+  font-size:20px;
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  opacity:.95;
+}
+
+.back:hover{
+  background:rgba(255,255,255,.12);
+  text-decoration:none;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffdce9,#fff6c9);
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 0 0 2px rgba(255,255,255,.18);
+  flex-shrink:0;
+}
+
+.info{
+  min-width:0;
+  flex:1;
+}
+
+.name{
+  font-weight:700;
+  font-size:15px;
+  line-height:1.2;
+}
+
+.status{
+  font-size:11px;
+  color:rgba(255,255,255,.72);
+  margin-top:3px;
+}
+
+.menu{
+  font-size:22px;
+  color:rgba(255,255,255,.75);
+  padding:0 4px;
+}
+
+.chat{
+  flex:1;
+  padding:18px 12px 18px;
+  background:
+    linear-gradient(rgba(220,231,242,.88),rgba(220,231,242,.88)),
+    repeating-linear-gradient(45deg,transparent,transparent 16px,rgba(255,255,255,.22) 16px,rgba(255,255,255,.22) 17px);
+}
+
+.day{
+  text-align:center;
+  margin:10px 0 18px;
+}
+
+.day span{
+  display:inline-block;
+  background:rgba(86,101,116,.22);
+  color:#fff;
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:999px;
+}
+
+.row{
+  display:flex;
+  margin:8px 0;
+  gap:7px;
+  align-items:flex-end;
+}
+
+.row.right{
+  justify-content:flex-end;
+}
+
+.mini-avatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ffdce9,#fff6c9);
+  display:grid;
+  place-items:center;
+  font-size:16px;
+  flex-shrink:0;
+  cursor:pointer;
+}
+
+.bubble{
+  max-width:72%;
+  padding:9px 12px;
+  border-radius:17px;
+  line-height:1.55;
+  font-size:14px;
+  position:relative;
+  word-break:break-word;
+  box-shadow:0 1px 1px rgba(0,0,0,.04);
+}
+
+.left .bubble{
+  background:var(--bubble-left);
+  border-bottom-left-radius:5px;
+}
+
+.right .bubble{
+  background:var(--bubble-right);
+  border-bottom-right-radius:5px;
+}
+
+.meta{
+  font-size:10px;
+  color:#65717d;
+  margin:0 3px 2px;
+  white-space:nowrap;
+}
+
+.read{
+  display:block;
+  text-align:right;
+  font-size:10px;
+  color:#65717d;
+  line-height:1.1;
+}
+
+.call{
+  text-align:center;
+  margin:14px auto;
+  color:#65717d;
+  font-size:12px;
+}
+
+.call span{
+  display:inline-block;
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(180,190,200,.55);
+  border-radius:14px;
+  padding:8px 13px;
+}
+
+.hint{
+  text-align:center;
+  font-size:11px;
+  color:#6d7b88;
+  margin:22px 0 0;
+}
+
+.inputbar{
+  background:#f7f8fa;
+  border-top:1px solid var(--line);
+  padding:10px 10px 14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.input-icon{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#e8ecef;
+  color:#7b8794;
+  font-size:15px;
+  flex-shrink:0;
+}
+
+.draft{
+  flex:1;
+  min-height:38px;
+  background:#fff;
+  border:1px solid #dde2e8;
+  border-radius:20px;
+  padding:8px 13px;
+  color:#1f2328;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+}
+
+.send{
+  border:0;
+  background:#d9dee5;
+  color:#8b96a3;
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:700;
+}
+
+@media(max-width:480px){
+  .phone{
+    box-shadow:none;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="phone">
+
+  <header class="header">
+    <a class="back" href="chat_home.html">‹</a>
+    <div class="avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+    <div class="info">
+      <div class="name">杉谷 遥（🍰06/17）</div>
+      <div class="status">最終ログイン：<span data-date="-2"></span> 06:48</div>
+    </div>
+    <div class="menu">⋯</div>
+  </header>
+
+  <main class="chat">
+
+    <div class="day"><span data-date="-14"></span></div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">お母さんがね、卒業したら迎えに来てくれるって言ってた。</div>
+      <div class="meta">20:18</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta"><span class="read">既読</span>20:20</div>
+      <div class="bubble">迎えに来るって、杉守村から？</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">うん。まだ先だけど、村の外で暮らせるかも。</div>
+      <div class="meta">20:22</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta"><span class="read">既読</span>20:25</div>
+      <div class="bubble">よかったじゃん。ちゃんと出られるといいね。</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">うん。ちょっと安心した。</div>
+      <div class="meta">20:27</div>
+    </div>
+
+    <div class="day"><span data-date="-10"></span></div>
+
+    <div class="row right">
+      <div class="meta"><span class="read">既読</span>22:03</div>
+      <div class="bubble">前に言ってた神隠し怪談って、まだ村で話題になるの？</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">たまにね。杉守山のやつでしょ。</div>
+      <div class="meta">22:06</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">そういう話、家でするとおばあちゃんが嫌な顔するから、あんまり言わないけど。</div>
+      <div class="meta">22:07</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta"><span class="read">既読</span>22:09</div>
+      <div class="bubble">怖くないの？</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">怖いっていうより、村の人はみんな「昔からそういうもの」って感じ。</div>
+      <div class="meta">22:11</div>
+    </div>
+
+    <div class="day"><span data-date="-7"></span></div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">今日、学校の健康診断だったんだけどさ。</div>
+      <div class="meta">21:10</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta"><span class="read">既読</span>21:12</div>
+      <div class="bubble">おつかれ。どうだった？</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">毎年あるやつだから、すぐ終わると思ってたのに。</div>
+      <div class="meta">21:13</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">今年だけ、なんか妙に時間かかった。</div>
+      <div class="meta">21:14</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta"><span class="read">既読</span>21:15</div>
+      <div class="bubble">検査増えたとか？</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">わかんない。まあ、たぶん大丈夫だと思うけど。</div>
+      <div class="meta">21:18</div>
+    </div>
+
+    <div class="day"><span data-date="-4"></span></div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">明後日、村の祭りがあるんだけどさ。</div>
+      <div class="meta">18:56</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta"><span class="read">既読</span>18:58</div>
+      <div class="bubble">ああ、前に言ってたやつ？</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">うん。今年、私が何か役をやることになったっぽい。</div>
+      <div class="meta">19:01</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">詳しいことはまだ聞いてないけど、正直ちょっと面倒。</div>
+      <div class="meta">19:03</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta"><span class="read">既読</span>19:05</div>
+      <div class="bubble">無理しないでね。</div>
+    </div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">うん。まあ、たぶん大丈夫。</div>
+      <div class="meta">19:07</div>
+    </div>
+
+    <div class="day"><span data-date="-2"></span></div>
+
+    <div class="row left">
+      <div class="mini-avatar" onclick="location.href='profile_haruka.html'">🌸</div>
+      <div class="bubble">もし私が消えたら、探しに来てくれる？</div>
+      <div class="meta">06:48</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta">07:23</div>
+      <div class="bubble">冗談だよね？</div>
+    </div>
+
+    <div class="row right">
+      <div class="meta">07:24</div>
+      <div class="bubble">遥？</div>
+    </div>
+
+    <div class="call">
+      <span>ビデオ通話　応答なし<br>07:31</span>
+    </div>
+
+    <div class="row right">
+      <div class="meta">07:46</div>
+      <div class="bubble">ねえ、返事して。</div>
+    </div>
+
+    <div class="call">
+      <span>ビデオ通話　応答なし<br>08:12</span>
+    </div>
+
+    <div class="row right">
+      <div class="meta">08:38</div>
+      <div class="bubble">本当に大丈夫？</div>
+    </div>
+
+    <div class="call">
+      <span>ビデオ通話　応答なし<br>09:05</span>
+    </div>
+
+    <div class="hint">※ 遥のアイコンをクリックするとプロフィールを表示できます。</div>
+
+  </main>
+
+  <div class="inputbar">
+    <div class="input-icon">＋</div>
+    <div class="draft">今から探しに行く。</div>
+    <button class="send">送信</button>
+  </div>
+
+</div>
+
+<script>
+function formatDate(offsetDays){
+  const date = new Date();
+  date.setDate(date.getDate() + offsetDays);
+
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+
+  return `${y}/${m}/${d}`;
+}
+
+document.querySelectorAll("[data-date]").forEach(el=>{
+  const offset = Number(el.dataset.date || 0);
+  el.textContent = formatDate(offset);
+});
+</script>
+
+</body>
+</html>
