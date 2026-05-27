@@ -1,24 +1,250 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>友だち申請 — 高城真紀</title><style>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>友だち申請 — 高城真紀</title>
+
+<style>
 :root{
-  --ink:#1d2733;--muted:#657385;--line:#d8dee8;--bg:#f3f6f9;--card:#fff;
-  --blue:#315f8f;--green:#0b6b4b;--red:#8b2635;--cream:#f8f4e8;--shadow:0 12px 30px rgba(24,38,56,.08);
+  --green:#06c755;
+  --text:#1f2328;
+  --muted:#7b8794;
+  --line:#e1e5ea;
+  --bg:#f4f6f8;
 }
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;line-height:1.75}
-a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
-.top{height:48px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5}
-.top .brand{font-weight:700;color:#21334a;letter-spacing:.04em}.top .back{font-size:13px;color:#66758a}
-.wrap{max-width:920px;margin:28px auto;padding:0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px;margin:18px 0}
-.kicker{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-h1{font-size:28px;line-height:1.3;margin:0 0 12px} h2{font-size:20px;margin:24px 0 8px}
-p{margin:9px 0}.muted{color:var(--muted);font-size:13px}.small{font-size:12px;color:var(--muted)}
-.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;color:#5a6878;background:#fbfcfd;margin:3px}
-.keyword{font-weight:700;color:#8a4b00;border-bottom:1px dotted #b88a39}.btn{display:inline-block;background:#24384f;color:#fff;border-radius:10px;padding:10px 15px;margin:6px 6px 0 0}
-.btn:hover{text-decoration:none;background:#172739}.danger{color:var(--red);font-weight:700}.notice{background:#fff8dd;border-left:4px solid #d0a52e;padding:12px 14px;border-radius:8px;margin:12px 0}.doc{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;background:#fff;border:1px solid #d7d0bf;padding:22px;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.footer{margin:32px auto 20px;text-align:center;font-size:12px;color:#8995a3}
-input,button{font:inherit} .searchline{display:flex;gap:8px;margin:14px 0}.searchline input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}.searchline button{border:0;border-radius:10px;background:#315f8f;color:#fff;padding:10px 16px;cursor:pointer}.result{border-left:3px solid #6d8fb1;padding:10px 0 10px 14px;margin:12px 0;background:#fff}.result .url{font-size:12px;color:#177245}.result a{font-size:17px;font-weight:650}
-@media(max-width:650px){.wrap{margin:18px auto}.card{padding:18px}h1{font-size:23px}.searchline{flex-direction:column}.top{padding:0 14px}}
-</style></head>
-<body><div class="top"><a class="back" href="add_friend.html">← 戻る</a><div class="brand">Talk</div></div>
-<div class="wrap"><div class="card" style="max-width:520px;margin:50px auto;text-align:center"><div style="font-size:58px">🪪</div><h1>高城 真紀</h1><p class="muted">プロフィール画像をクリックして確認できます。</p><p><a class="btn" href="takashiro_profile.html">プロフィールを見る</a></p></div></div><div class="footer">検索結果は完全ではありません / sugimori-arg</div></body></html>
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:#f2f4f7;
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.phone{
+  width:min(430px,100%);
+  min-height:100vh;
+  margin:0 auto;
+  background:var(--bg);
+  box-shadow:0 0 28px rgba(0,0,0,.14);
+  display:flex;
+  flex-direction:column;
+}
+
+.header{
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  padding:14px 16px 12px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.topline{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.back{
+  font-size:13px;
+  color:#5f6b78;
+}
+
+.back:hover{
+  text-decoration:underline;
+}
+
+.appname{
+  font-size:12px;
+  color:#9aa3ad;
+}
+
+.title{
+  font-size:25px;
+  font-weight:800;
+  margin-top:10px;
+}
+
+.subtitle{
+  margin-top:4px;
+  color:#7b8794;
+  font-size:12px;
+}
+
+.content{
+  flex:1;
+  padding:18px 16px;
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:22px 18px;
+  box-shadow:0 4px 14px rgba(30,42,56,.05);
+}
+
+.user{
+  text-align:center;
+  padding-bottom:18px;
+  border-bottom:1px solid #eef1f4;
+}
+
+.avatar{
+  width:78px;
+  height:78px;
+  margin:0 auto 12px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#dce7f3,#f6f2ea);
+  display:grid;
+  place-items:center;
+  font-size:38px;
+  cursor:pointer;
+  box-shadow:0 0 0 5px #f4f6f8;
+}
+
+.name{
+  font-size:21px;
+  font-weight:800;
+}
+
+.id{
+  color:#7b8794;
+  font-size:12px;
+  margin-top:2px;
+}
+
+.hint{
+  color:#9aa3ad;
+  font-size:11px;
+  margin-top:8px;
+}
+
+.form{
+  padding-top:18px;
+}
+
+.label{
+  font-size:12px;
+  color:#7b8794;
+  margin-bottom:7px;
+}
+
+.message{
+  width:100%;
+  min-height:92px;
+  resize:none;
+  border:1px solid #dde2e8;
+  border-radius:14px;
+  padding:11px 12px;
+  font-size:14px;
+  line-height:1.7;
+  color:#1f2328;
+  background:#fbfcfd;
+  font-family:inherit;
+}
+
+.buttons{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+}
+
+.btn{
+  flex:1;
+  border:0;
+  border-radius:12px;
+  padding:12px 14px;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.primary{
+  background:var(--green);
+  color:#fff;
+}
+
+.secondary{
+  background:#e9edf1;
+  color:#5f6b78;
+}
+
+.primary:hover{
+  filter:brightness(.96);
+}
+
+.secondary:hover{
+  background:#dfe4e9;
+}
+
+.footer{
+  padding:18px 16px 22px;
+  text-align:center;
+  font-size:11px;
+  line-height:1.7;
+  color:#8a96a3;
+}
+
+@media(max-width:480px){
+  .phone{
+    box-shadow:none;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="phone">
+
+  <header class="header">
+    <div class="topline">
+      <a class="back" href="add_friend.html">← 友だち追加に戻る</a>
+      <div class="appname">Talk</div>
+    </div>
+
+    <div class="title">友だち申請</div>
+    <div class="subtitle">申請メッセージを確認してください。</div>
+  </header>
+
+  <main class="content">
+    <section class="card">
+
+      <div class="user">
+        <div class="avatar" onclick="location.href='takashiro_profile.html'">👩‍💼</div>
+        <div class="name">高城 真紀</div>
+        <div class="id">ユーザーID：maki</div>
+        <div class="hint">※ アイコンをクリックするとプロフィールを表示できます。</div>
+      </div>
+
+      <div class="form">
+        <div class="label">申請メッセージ</div>
+        <textarea class="message">娘さんの失踪についてお伝えしたいことがあります。現在、私も調べています。</textarea>
+
+        <div class="buttons">
+          <button class="btn secondary" onclick="location.href='add_friend.html'">戻る</button>
+          <button class="btn primary" onclick="location.href='takashiro_profile.html'">申請を送信</button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <div class="footer">
+    このゲームは完全なフィクションです。実在の人物・団体・地名・事件などとは一切関係ありません。
+  </div>
+
+</div>
+</body>
+</html>
