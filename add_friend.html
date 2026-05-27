@@ -178,13 +178,15 @@ a{
   flex-shrink:0;
   overflow:hidden;
 }
-  .avatar img{
+
+.avatar img{
   width:100%;
   height:100%;
   object-fit:cover;
   object-position:center;
   display:block;
 }
+
 .user-main{
   flex:1;
   min-width:0;
@@ -311,9 +313,7 @@ a{
           <div>駅前カフェ シフト連絡</div>
         </div>
         <div class="disabled-item">
-          <div class="avatar">
-            <img src="maki_eagle.png" alt="高城真紀">
-          </div>
+          <div class="disabled-avatar">📝</div>
           <div>卒制メモ共有</div>
         </div>
       </div>
@@ -335,7 +335,9 @@ function add(){
   if(normalized === '高城真紀'){
     res.innerHTML = `
       <a class="user-card" href="takashiro_add.html">
-        <div class="avatar">🪪</div>
+        <div class="avatar">
+          <img src="maki_eagle.png" alt="高城真紀">
+        </div>
         <div class="user-main">
           <div class="user-name">高城 真紀</div>
           <div class="user-desc">申請ページを開く</div>
