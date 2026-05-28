@@ -245,6 +245,12 @@
       margin:0 0 8px 4px;
     }
 
+    .history-list-inner{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:12px;
+    }
+
     .suggest-card{
       display:block;
       border:1px solid #e0e3e7;
@@ -291,6 +297,7 @@
       display:flex;
       flex-direction:column;
       justify-content:center;
+      min-height:auto;
     }
 
     .history-title{
@@ -748,6 +755,12 @@
         history=[];
       }
 
+      history=history.filter(item=>{
+        return !(item.link==="forum.html" && item.title==="巡山祭の知られていない部分と神隠しの真相（削除済み）");
+      });
+
+      localStorage.setItem("mooriiHistory",JSON.stringify(history));
+
       if(!history.length){
         home.innerHTML=`
           <div class="home-section">
@@ -758,66 +771,69 @@
         return;
       }
 
-      home.className='homeblocks';
-      home.innerHTML=history.map(item=>`
+      home.innerHTML=`
         <div class="home-section">
           <div class="section-title">履歴</div>
-          <a class="suggest-card history" href="${item.link}" onclick="recordPage('${escapeQuote(item.title)}','${escapeQuote(item.url)}','${escapeQuote(item.link)}','${escapeQuote(item.desc)}')">
-            <div class="label">${item.url}</div>
-            <div class="history-title">${item.title}</div>
-            <p style="margin-top:8px;">${item.desc}</p>
-          </a>
+          <div class="history-list-inner">
+            ${history.map(item=>`
+              <a class="suggest-card history" href="${item.link}" onclick="recordPage('${escapeQuote(item.title)}','${escapeQuote(item.url)}','${escapeQuote(item.link)}','${escapeQuote(item.desc)}')">
+                <div class="label">${item.url}</div>
+                <div class="history-title">${item.title}</div>
+                <p style="margin-top:8px;">${item.desc}</p>
+              </a>
+            `).join('')}
+          </div>
         </div>
-      `).join('');
+      `;
     }
 
     function search(){
-  const q=document.getElementById('q').value.trim();
-  const box=document.getElementById('results');
-  const home=document.getElementById('homeblocks');
+      const q=document.getElementById('q').value.trim();
+      const box=document.getElementById('results');
+      const home=document.getElementById('homeblocks');
 
-  if(!q){
-    box.style.display='none';
-    showSavedPage();
-    return;
-  }
+      if(!q){
+        box.style.display='none';
+        showSavedPage();
+        return;
+      }
 
-  if(q.includes("巡山祭後半部分") || q.includes("後半部分")){
-    box.style.display='block';
-    home.style.display='none';
-    box.innerHTML=`
-      <div class="result-head">検索結果</div>
-      <div class="no-result">Moorii内では該当する検索結果が見つかりませんでした。</div>
-    `;
-    return;
-  }
+      if(q.includes("巡山祭後半部分") || q.includes("後半部分")){
+        box.style.display='block';
+        home.style.display='none';
+        box.innerHTML=`
+          <div class="result-head">検索結果</div>
+          <div class="no-result">Moorii内では該当する検索結果が見つかりませんでした。</div>
+        `;
+        return;
+      }
 
-  const res=data
-    .filter(r=>r.keys.some(k=>q.includes(k)||k.includes(q)))
-    .slice(0,3);
+      const res=data
+        .filter(r=>r.keys.some(k=>q.includes(k)||k.includes(q)))
+        .slice(0,3);
 
-  box.style.display='block';
-  home.style.display='none';
+      box.style.display='block';
+      home.style.display='none';
 
-  if(!res.length){
-    box.innerHTML=`
-      <div class="result-head">検索結果</div>
-      <div class="no-result">該当する検索結果はありません。</div>
-    `;
-    return;
-  }
+      if(!res.length){
+        box.innerHTML=`
+          <div class="result-head">検索結果</div>
+          <div class="no-result">該当する検索結果はありません。</div>
+        `;
+        return;
+      }
 
-  box.innerHTML=`
-    <div class="result-head">約 ${res.length} 件の検索結果</div>
-    ${res.map(r=>`
-      <div class="result">
-        <div class="url">${r.url}</div>
-        <a href="${r.link}" onclick="recordPage('${escapeQuote(r.title)}','${escapeQuote(r.url)}','${escapeQuote(r.link)}','${escapeQuote(r.desc)}')">${r.title}</a>
-        <div class="desc">${r.desc}</div>
-      </div>
-    `).join('')}
-  `;
-}
+      box.innerHTML=`
+        <div class="result-head">約 ${res.length} 件の検索結果</div>
+        ${res.map(r=>`
+          <div class="result">
+            <div class="url">${r.url}</div>
+            <a href="${r.link}" onclick="recordPage('${escapeQuote(r.title)}','${escapeQuote(r.url)}','${escapeQuote(r.link)}','${escapeQuote(r.desc)}')">${r.title}</a>
+            <div class="desc">${r.desc}</div>
+          </div>
+        `).join('')}
+      `;
+    }
   </script>
 </body>
 </html>
