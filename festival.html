@@ -1,29 +1,361 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>巡山祭について</title><style>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>杉守村の巡山祭を見に行った記録</title>
+<style>
 :root{
-  --ink:#1d2733;--muted:#657385;--line:#d8dee8;--bg:#f3f6f9;--card:#fff;
-  --blue:#315f8f;--green:#0b6b4b;--red:#8b2635;--cream:#f8f4e8;--shadow:0 12px 30px rgba(24,38,56,.08);
+  --ink:#2f2a25;
+  --muted:#7d756b;
+  --line:#e5d9c6;
+  --bg:#f4efe6;
+  --paper:#fffaf0;
+  --paper2:#fbf3df;
+  --accent:#9b6a36;
+  --red:#9b3f32;
+  --green:#5d745c;
 }
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;line-height:1.75}
-a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
-.top{height:48px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5}
-.top .brand{font-weight:700;color:#21334a;letter-spacing:.04em}.top .back{font-size:13px;color:#66758a}
-.wrap{max-width:920px;margin:28px auto;padding:0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px;margin:18px 0}
-.kicker{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-h1{font-size:28px;line-height:1.3;margin:0 0 12px} h2{font-size:20px;margin:24px 0 8px}
-p{margin:9px 0}.muted{color:var(--muted);font-size:13px}.small{font-size:12px;color:var(--muted)}
-.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;color:#5a6878;background:#fbfcfd;margin:3px}
-.keyword{font-weight:700;color:#8a4b00;border-bottom:1px dotted #b88a39}.btn{display:inline-block;background:#24384f;color:#fff;border-radius:10px;padding:10px 15px;margin:6px 6px 0 0}
-.btn:hover{text-decoration:none;background:#172739}.danger{color:var(--red);font-weight:700}.notice{background:#fff8dd;border-left:4px solid #d0a52e;padding:12px 14px;border-radius:8px;margin:12px 0}.doc{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;background:#fff;border:1px solid #d7d0bf;padding:22px;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.footer{margin:32px auto 20px;text-align:center;font-size:12px;color:#8995a3}
-input,button{font:inherit} .searchline{display:flex;gap:8px;margin:14px 0}.searchline input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}.searchline button{border:0;border-radius:10px;background:#315f8f;color:#fff;padding:10px 16px;cursor:pointer}.result{border-left:3px solid #6d8fb1;padding:10px 0 10px 14px;margin:12px 0;background:#fff}.result .url{font-size:12px;color:#177245}.result a{font-size:17px;font-weight:650}
-@media(max-width:650px){.wrap{margin:18px auto}.card{padding:18px}h1{font-size:23px}.searchline{flex-direction:column}.top{padding:0 14px}}
-</style></head>
-<body><div class="top"><a class="back" href="shrine.html">← 戻る</a><div class="brand">杉守調査</div></div>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    linear-gradient(rgba(255,255,255,.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px),
+    var(--bg);
+  background-size:28px 28px;
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+  line-height:1.9;
+}
+a{color:#486f91;text-decoration:none}
+a:hover{text-decoration:underline}
+
+.top{
+  border-bottom:1px solid #d8ccb8;
+  background:#efe5d5;
+}
+.top-inner{
+  max-width:860px;
+  margin:0 auto;
+  padding:12px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.back{
+  color:#6f665b;
+  font-size:13px;
+}
+.site-name{
+  font-size:13px;
+  color:#6f665b;
+  letter-spacing:.08em;
+}
+
+.wrap{
+  max-width:860px;
+  margin:34px auto 46px;
+  padding:0 18px;
+}
+
+.note-paper{
+  background:var(--paper);
+  border:1px solid var(--line);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.8) inset,
+    0 12px 32px rgba(90,65,35,.12);
+  position:relative;
+}
+.note-paper:before{
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:68px;
+  width:1px;
+  background:#e8b7a6;
+  opacity:.75;
+}
+.note-head{
+  padding:34px 38px 24px 96px;
+  border-bottom:2px dotted #ddcdb6;
+}
+.breadcrumb{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:12px;
+}
+h1{
+  margin:0 0 10px;
+  font-size:30px;
+  line-height:1.45;
+  font-weight:800;
+}
+.post-date{
+  color:#8a6b42;
+  font-size:13px;
+  margin-bottom:14px;
+}
+.subtitle{
+  color:#5f574e;
+  font-size:14px;
+  margin:0;
+}
+
+.diary-info{
+  padding:18px 38px 18px 96px;
+  border-bottom:1px solid #eadfce;
+  background:#fff6e7;
+}
+.diary-info dl{
+  margin:0;
+  display:grid;
+  grid-template-columns:88px 1fr;
+  gap:6px 14px;
+  font-size:14px;
+}
+.diary-info dt{
+  color:#9b6a36;
+  font-weight:800;
+}
+.diary-info dd{
+  margin:0;
+  color:#4f463d;
+}
+.diary-info dd:before{
+  content:"";
+}
+
+.entry{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  border-bottom:1px solid #eadfce;
+}
+.entry:last-child{
+  border-bottom:0;
+}
+.time{
+  padding:26px 12px 24px 18px;
+  color:#9b6a36;
+  font-weight:800;
+  font-size:13px;
+  text-align:right;
+}
+.body{
+  padding:24px 38px 24px 28px;
+  background:
+    linear-gradient(to bottom, transparent 31px, rgba(210,190,160,.22) 32px);
+  background-size:100% 32px;
+}
+.body h2{
+  margin:0 0 12px;
+  font-size:20px;
+  line-height:1.45;
+  color:#3c332b;
+}
+.body p{
+  margin:0 0 14px;
+}
+.keyword{
+  font-weight:700;
+  color:var(--accent);
+  background:linear-gradient(transparent 62%,rgba(219,178,112,.38) 62%);
+}
+.memo{
+  margin:18px 0;
+  padding:13px 15px;
+  background:#fff4d8;
+  border:1px solid #e8d09b;
+  border-radius:8px;
+  color:#625641;
+  font-size:14px;
+}
+.quote{
+  margin:18px 0;
+  padding:12px 16px;
+  border-left:4px solid #b8a48a;
+  background:#f8f0e2;
+  color:#5b534b;
+  font-size:14px;
+}
+.photo{
+  margin:18px 0;
+  padding:14px 16px;
+  border:1px dashed #cbbba3;
+  background:#f8f1e5;
+  color:#756a5c;
+  font-size:13px;
+}
+.footer{
+  max-width:860px;
+  margin:0 auto 24px;
+  padding:0 18px;
+  text-align:center;
+  color:#8a8177;
+  font-size:12px;
+  line-height:1.7;
+}
+
+@media(max-width:680px){
+  .wrap{margin:20px auto 34px;padding:0 12px}
+  .note-paper:before{left:42px}
+  .note-head{padding:26px 22px 22px 62px}
+  h1{font-size:24px}
+  .diary-info{padding:16px 18px 16px 62px}
+  .diary-info dl{grid-template-columns:72px 1fr}
+  .entry{grid-template-columns:46px 1fr}
+  .time{padding:24px 8px 20px 8px;font-size:12px}
+  .body{padding:22px 18px 22px 18px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a class="back" href="shrine.html">← 戻る</a>
+    <div class="site-name">個人旅行メモ / 山あい散歩</div>
+  </div>
+</header>
+
 <div class="wrap">
-<div class="card"><div class="kicker">Suginari Shrine</div><h1>巡 山 祭</h1>
-<p>巡山祭は、杉守村で毎年行われる祭礼です。奉行者は朝五時に山へ入り、山中の小さな神龕を巡ります。</p>
-<p>公開される行事は、奉納舞、酒造り、出発の見送りまでです。</p>
-<div class="notice">後半部分については、氏子関係者以外への公開を行っておりません。</div>
-<p class="small">関連語：巡山祭後半部分</p></div></div><div class="footer">検索結果は完全ではありません / sugimori-arg</div></body></html>
+  <article class="note-paper">
+
+    <header class="note-head">
+      <div class="breadcrumb">2025年4月の記録　&gt;　杉守村</div>
+      <h1>杉守村の巡山祭を見に行った記録</h1>
+      <div class="post-date">投稿日：2025.04.25</div>
+      <p class="subtitle">
+        いわゆる観光イベントというより、村の中で静かに続いている祭礼を、少しだけ見せてもらった日のメモです。
+      </p>
+    </header>
+
+    <section class="diary-info">
+      <dl>
+        <dt>訪問日</dt>
+        <dd>2025年4月21日</dd>
+        <dt>場所</dt>
+        <dd>杉鳴神社</dd>
+        <dt>記録</dt>
+        <dd>個人の旅行記録</dd>
+      </dl>
+    </section>
+
+    <section class="entry">
+      <div class="time">09:40</div>
+      <div class="body">
+        <h2>杉守村に着いた</h2>
+        <p>
+          2025年の春、杉守村で行われる<span class="keyword">巡山祭</span>を見に行きました。
+          杉鳴神社のことを調べていたときに名前を見つけて、ちょうど日程が合ったので寄ってみることにしました。
+        </p>
+        <p>
+          村は思っていたより静かで、祭りの日なのに観光地のような賑やかさはありませんでした。
+          屋台や大きな看板があるわけでもなく、神社の境内に地元の人が少しずつ集まっている感じです。
+        </p>
+        <div class="photo">
+          写真メモ：神社へ向かう道。杉林が近く、午前中でも少しひんやりしていた。
+        </div>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="time">10:15</div>
+      <div class="body">
+        <h2>受付で聞いたこと</h2>
+        <p>
+          境内の入口付近で、見学者向けの簡単な説明がありました。
+          そのとき、祭礼を取り仕切っているのは昔からこの地域に関わっている
+          <strong>杣木家系</strong>の人たちだと聞きました。
+        </p>
+        <p>
+          「昔からその家が中心になっている」という程度の説明で、詳しい由来までは分かりませんでした。
+          ただ、説明してくれた人の言い方からすると、村の中では当たり前のことのようでした。
+        </p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="time">11:00</div>
+      <div class="body">
+        <h2>献舞を見る</h2>
+        <p>
+          最初に見学できたのは、社殿の前で行われる献舞でした。
+          大きな音楽や派手な動きがあるものではなく、かなり静かに進んでいきます。
+        </p>
+        <p>
+          見ている側も自然と声を落としてしまうような空気で、写真を撮っている人もいましたが、
+          みんな少し遠慮がちでした。
+        </p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="time">12:20</div>
+      <div class="body">
+        <h2>酒造りの説明</h2>
+        <p>
+          献舞のあと、祭りに使う酒についての説明がありました。
+          「酒造り」と書くと体験イベントのように聞こえますが、実際には祭礼で使う酒をどう扱うかを見せてもらう、という感じです。
+        </p>
+        <p>
+          一般の見学者が見られたのは、この献舞と酒造りの説明まででした。
+          そのあと「本日の公開行事はここまでです」と案内され、観光客は自然に解散する流れになりました。
+        </p>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="time">13:10</div>
+      <div class="body">
+        <h2>帰り際に聞こえた話</h2>
+        <p>
+          帰ろうとして神社の外で少し写真を撮っていたとき、村の人同士の会話がたまたま耳に入りました。
+          はっきり聞こえたわけではありませんが、気になった言葉がいくつかありました。
+        </p>
+        <div class="quote">
+          「明日の方が大事」<br>
+          「後半は外の人には見せない」<br>
+          「今年は杣木さんの方で決まっている」
+        </div>
+        <p>
+          そのとき初めて、公開されていたものとは別に
+          <span class="keyword">巡山祭後半部分</span>のようなものがあるのかもしれないと思いました。
+        </p>
+        <p>
+          ただ、こちらはただの観光客です。
+          人に見せないと言っているものを無理に見ようとするのは失礼なので、そのまま村を出ました。
+        </p>
+        <div class="memo">
+          この部分は、あくまで帰り際に聞こえた会話のメモです。
+          村の人に直接確認したわけではありません。
+        </div>
+      </div>
+    </section>
+
+    <section class="entry">
+      <div class="time">帰宅後</div>
+      <div class="body">
+        <h2>あとから思ったこと</h2>
+        <p>
+          巡山祭は、観光向けに大きく開かれた祭りというより、村の祭礼の一部だけを見せてもらうものなのだと思います。
+          見学できた範囲だけでも十分に印象に残りましたが、帰り際の会話は少し気になっています。
+        </p>
+        <p>
+          とはいえ、地方の祭りには外から来た人が入っていい範囲と、そうではない範囲があるはずです。
+          もし見に行く人がいるなら、案内された範囲で静かに見るのが一番いいと思いました。
+        </p>
+      </div>
+    </section>
+
+  </article>
+</div>
+
+<div class="footer">
+  このゲームは完全なフィクションです。実在の人物・団体・地名・事件などとは一切関係ありません。
+</div>
+
+</body>
+</html>
