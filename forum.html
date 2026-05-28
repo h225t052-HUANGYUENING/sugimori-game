@@ -10,19 +10,12 @@
   --blue:#1772f6;
   --blue-dark:#0f5dc8;
   --text:#1f2328;
-  --muted:#7b8794;
   --line:#e5e8ef;
   --bg:#f6f7f9;
-  --card:#ffffff;
-  --soft:#f8fafc;
   --danger:#8b2635;
-  --green:#16a34a;
-  --orange:#b7791f;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
   margin:0;
@@ -37,9 +30,7 @@ a{
   text-decoration:none;
 }
 
-a:hover{
-  text-decoration:underline;
-}
+a:hover{text-decoration:underline;}
 
 .header{
   background:#fff;
@@ -74,10 +65,6 @@ a:hover{
   flex-shrink:0;
 }
 
-.nav span{
-  cursor:default;
-}
-
 .nav .active{
   color:var(--blue);
   font-weight:700;
@@ -92,7 +79,6 @@ a:hover{
   border:1px solid #edf0f3;
   border-radius:999px;
   padding:7px 12px;
-  color:#9aa3ad;
   font-size:13px;
 }
 
@@ -152,9 +138,7 @@ a:hover{
   gap:16px;
 }
 
-.main{
-  min-width:0;
-}
+.main{min-width:0;}
 
 .notice{
   background:#fff;
@@ -217,34 +201,65 @@ a:hover{
   gap:10px;
 }
 
-.photo-box{
-  margin-top:16px;
-  border:1px solid #e1e7ef;
-  border-radius:14px;
-  overflow:hidden;
-  background:#f6f8fa;
-  cursor:pointer;
-}
-
-.photo-preview{
-  min-height:250px;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  color:#7b8794;
-  font-size:13px;
-  line-height:1.8;
-  background:
-    linear-gradient(180deg,rgba(248,250,252,.92),rgba(232,237,244,.94)),
-    repeating-linear-gradient(45deg,#edf1f5,#edf1f5 8px,#f8fafc 8px,#f8fafc 16px);
-}
-
-.photo-caption{
-  padding:9px 12px;
-  border-top:1px solid #e5e8ef;
-  color:#8a96a3;
-  font-size:12px;
+.image-box{
+  margin-top:18px;
   background:#fff;
+  border:1px solid #dfe6ef;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 4px 14px rgba(35,52,85,.04);
+}
+
+.image-header{
+  padding:15px 18px 6px;
+  font-size:14px;
+  font-weight:800;
+  color:#5f6b7a;
+}
+
+.image-card{
+  margin:12px 18px 18px;
+  background:#f5f7fb;
+  border:1px solid #e2e8f0;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.image-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px rgba(35,52,85,.10);
+}
+
+.image-card img{
+  width:100%;
+  display:block;
+  max-height:520px;
+  object-fit:cover;
+  background:#eef2f7;
+}
+
+.image-name{
+  padding:9px 11px 3px;
+  font-size:12px;
+  color:#6b7686;
+  text-align:center;
+  word-break:break-all;
+}
+
+.image-note{
+  padding:0 11px 10px;
+  font-size:11px;
+  color:#9aa3ad;
+  text-align:center;
+}
+
+.image-caption{
+  padding:0 18px 16px;
+  font-size:13px;
+  color:#7b8696;
+  line-height:1.8;
 }
 
 .question-body{
@@ -268,6 +283,54 @@ a:hover{
   min-width:0;
 }
 
+.avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  color:#426386;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  flex-shrink:0;
+  background:linear-gradient(135deg,#dbeafe,#f8fafc);
+}
+
+.avatar.gray{
+  background:linear-gradient(135deg,#edf0f3,#fff);
+  color:#6b7280;
+}
+
+.avatar.green{
+  background:linear-gradient(135deg,#e6f4ea,#fff);
+  color:#4d7d5a;
+}
+
+.avatar.yellow{
+  background:linear-gradient(135deg,#fff7d6,#fff);
+  color:#8a6f34;
+}
+
+.avatar.pink{
+  background:linear-gradient(135deg,#ffe4ef,#fff);
+  color:#9d4f73;
+}
+
+.avatar.dark{
+  background:linear-gradient(135deg,#303846,#111827);
+  color:#facc15;
+}
+
+.user-name{
+  font-size:14px;
+  font-weight:800;
+}
+
+.user-desc{
+  color:#8a96a3;
+  font-size:12px;
+  margin-top:1px;
+}
+
 .follow-btn{
   border:0;
   background:var(--blue);
@@ -282,6 +345,26 @@ a:hover{
 
 .follow-btn:hover{
   background:var(--blue-dark);
+}
+
+.answer-text{
+  font-size:15px;
+  line-height:1.85;
+  color:#2f3842;
+}
+
+.answer-text p{
+  margin:0 0 9px;
+}
+
+.answer-text p:last-child{
+  margin-bottom:0;
+}
+
+.clue{
+  color:var(--danger);
+  font-weight:800;
+  border-bottom:1px dotted var(--danger);
 }
 
 .question-actions{
@@ -392,78 +475,10 @@ a:hover{
   min-width:0;
 }
 
-.avatar{
-  width:36px;
-  height:36px;
-  border-radius:50%;
-  color:#426386;
-  display:grid;
-  place-items:center;
-  font-weight:900;
-  flex-shrink:0;
-  background:linear-gradient(135deg,#dbeafe,#f8fafc);
-}
-
-.avatar.gray{
-  background:linear-gradient(135deg,#edf0f3,#fff);
-  color:#6b7280;
-}
-
-.avatar.green{
-  background:linear-gradient(135deg,#e6f4ea,#fff);
-  color:#4d7d5a;
-}
-
-.avatar.yellow{
-  background:linear-gradient(135deg,#fff7d6,#fff);
-  color:#8a6f34;
-}
-
-.avatar.pink{
-  background:linear-gradient(135deg,#ffe4ef,#fff);
-  color:#9d4f73;
-}
-
-.avatar.dark{
-  background:linear-gradient(135deg,#303846,#111827);
-  color:#facc15;
-}
-
-.user-name{
-  font-size:14px;
-  font-weight:800;
-}
-
-.user-desc{
-  color:#8a96a3;
-  font-size:12px;
-  margin-top:1px;
-}
-
 .answer-time{
   color:#a0a8b2;
   font-size:12px;
   flex-shrink:0;
-}
-
-.answer-text{
-  font-size:15px;
-  line-height:1.85;
-  color:#2f3842;
-}
-
-.answer-text p{
-  margin:0 0 9px;
-}
-
-.answer-text p:last-child{
-  margin-bottom:0;
-}
-
-.clue{
-  color:var(--danger);
-  font-weight:800;
-  border-bottom:1px dotted var(--danger);
 }
 
 .action-row{
@@ -572,12 +587,6 @@ a:hover{
   font-weight:700;
 }
 
-.small{
-  color:#9aa3ad;
-  font-size:11px;
-  line-height:1.7;
-}
-
 .footer{
   max-width:1080px;
   margin:0 auto;
@@ -588,11 +597,11 @@ a:hover{
   line-height:1.7;
 }
 
-.lightbox,
+.image-modal,
 .login-mask{
   position:fixed;
   inset:0;
-  background:rgba(17,24,39,.54);
+  background:rgba(17,24,39,.62);
   display:none;
   align-items:center;
   justify-content:center;
@@ -600,41 +609,44 @@ a:hover{
   padding:20px;
 }
 
-.lightbox.show,
+.image-modal.show,
 .login-mask.show{
   display:flex;
 }
 
-.lightbox-card,
-.login-card{
-  width:min(540px,100%);
+.image-modal-card{
+  width:min(880px,96vw);
+  max-height:92vh;
   background:#fff;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 18px 50px rgba(0,0,0,.22);
+  box-shadow:0 18px 50px rgba(0,0,0,.28);
+  display:flex;
+  flex-direction:column;
 }
 
-.lightbox-image{
-  min-height:340px;
-  display:grid;
-  place-items:center;
-  text-align:center;
+.image-modal-card img{
+  width:100%;
+  max-height:78vh;
+  object-fit:contain;
+  background:#111827;
+}
+
+.image-modal-caption{
+  padding:10px 14px;
   color:#5f6b78;
   font-size:13px;
-  line-height:1.8;
-  padding:28px;
-  background:
-    linear-gradient(180deg,rgba(248,250,252,.9),rgba(224,231,238,.95)),
-    repeating-linear-gradient(0deg,#e8eef4,#e8eef4 5px,#f6f8fa 5px,#f6f8fa 10px);
+  line-height:1.6;
+  border-top:1px solid #e4e9ef;
 }
 
-.lightbox-close{
+.image-modal-close{
   width:100%;
   border:0;
   border-top:1px solid #e4e9ef;
   background:#fff;
   color:var(--blue);
-  padding:13px;
+  padding:12px;
   font-size:14px;
   font-weight:800;
   cursor:pointer;
@@ -642,6 +654,11 @@ a:hover{
 }
 
 .login-card{
+  width:min(540px,100%);
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
   padding:22px;
 }
 
@@ -740,6 +757,10 @@ a:hover{
   .page{
     margin-top:14px;
   }
+
+  .question-actions{
+    align-items:flex-start;
+  }
 }
 </style>
 </head>
@@ -798,13 +819,16 @@ a:hover{
           <span>キャッシュ表示</span>
         </div>
 
-        <div class="photo-box" onclick="openLightbox()">
-          <div class="photo-preview">
-            添付画像を表示<br>
-            20260417_sugimoriyama_02.jpg<br>
-            <span style="font-size:11px;color:#9aa3ad;">クリックで拡大</span>
+        <div class="image-box">
+          <div class="image-header">添付画像</div>
+
+          <div class="image-card" onclick="openImage('20260417_sugimoriyama_02.jpg','20260417_sugimoriyama_02.jpg')">
+            <img src="20260417_sugimoriyama_02.jpg" alt="杉守山の写真">
+            <div class="image-name">20260417_sugimoriyama_02.jpg</div>
+            <div class="image-note">クリックで拡大</div>
           </div>
-          <div class="photo-caption">
+
+          <div class="image-caption">
             杉守山の林道付近で撮影された画像。白いものが山中に並んでいる。
           </div>
         </div>
@@ -860,12 +884,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 02:25</div>
         </div>
-
         <div class="answer-text">
           <p>普通に怖い。夜中に見るんじゃなかった。</p>
           <p>でも写真だけだと墓なのか何なのか分からないですね。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 11</span>
           <span class="action">コメント 2</span>
@@ -883,12 +905,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 02:28</div>
         </div>
-
         <div class="answer-text">
           <p>こういう場所、昼でも行きたくない。</p>
           <p>墓じゃないとしても、同じ形のものが並んでるだけで怖い。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 19</span>
           <span class="action">コメント 4</span>
@@ -906,12 +926,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 02:31</div>
         </div>
-
         <div class="answer-text">
           <p>杉守村って、観光案内に載ってる場所ですよね。</p>
           <p>でもその奥まで行ったことはないです。普通に迷いそう。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 8</span>
           <span class="action">コメント 1</span>
@@ -929,12 +947,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 02:36</div>
         </div>
-
         <div class="answer-text">
           <p>観光地の奥って、たまに変なものありますよね。</p>
           <p>管理用の目印とか、古い道標とか、そういうものでは？</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 6</span>
           <span class="action">コメント 0</span>
@@ -952,12 +968,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 02:40</div>
         </div>
-
         <div class="answer-text">
           <p>見た目は墓っぽいけど、たぶん墓碑ではないと思います。</p>
           <p>写真の解像度が低いので、木の札か石かも分からないですね。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 32</span>
           <span class="action">コメント 5</span>
@@ -975,12 +989,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 02:43</div>
         </div>
-
         <div class="answer-text">
           <p>名前がもう怖い。</p>
           <p>杉守山って字面だけで何かありそうに見えるのずるい。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 14</span>
           <span class="action">コメント 3</span>
@@ -998,18 +1010,15 @@ a:hover{
           </div>
           <div class="answer-time">04/17 02:46</div>
         </div>
-
         <div class="answer-text">
           <p>その辺の人たちは、普段はかなり普通です。観光客にもわりと親切です。</p>
           <p>ただ、<span class="clue">杉鳴神社</span>とか信仰の話になると、急に空気が変わることがあります。</p>
           <p>悪い意味で怖いというより、「そこから先は外の人が触らないで」という感じです。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 89</span>
           <span class="action">コメント 21</span>
         </div>
-
         <div class="comments">
           <div class="comment"><b>通りすがりの猫：</b>分かる。地方の信仰って外から見ただけでは分からないこと多い。</div>
           <div class="comment"><b>Alex：</b>普通に観光する分には大丈夫そうだけど、深掘りしない方がよさそう。</div>
@@ -1028,12 +1037,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 03:02</div>
         </div>
-
         <div class="answer-text">
           <p>前にも似たような写真を見た気がします。</p>
           <p>ただ、こういう写真って角度と光でかなり印象が変わるので、実物を見ると普通なのかもしれません。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 19</span>
           <span class="action">コメント 4</span>
@@ -1051,12 +1058,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 03:08</div>
         </div>
-
         <div class="answer-text">
           <p>墓ではない気がするけど、何なのかは分からない。</p>
           <p>白いものが規則的に並んでるのがちょっと不気味ですね。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 24</span>
           <span class="action">コメント 6</span>
@@ -1074,12 +1079,10 @@ a:hover{
           </div>
           <div class="answer-time">04/17 03:13</div>
         </div>
-
         <div class="answer-text">
           <p>こういう質問、夜中に読むものじゃなかった。</p>
           <p>朝になったらただの山道写真に見えるかもしれない。</p>
         </div>
-
         <div class="action-row">
           <span class="action">参考になった 37</span>
           <span class="action">コメント 8</span>
@@ -1097,7 +1100,6 @@ a:hover{
           </div>
           <div class="answer-time">04/17 03:31</div>
         </div>
-
         <div class="deleted">
           この質問は一定数の通報を受けたため、コメント欄の一部が非表示になっています。<br>
           キャッシュページでは最新の状態を確認できません。
@@ -1105,7 +1107,6 @@ a:hover{
       </article>
 
     </section>
-
   </main>
 
   <aside class="sidebar">
@@ -1152,14 +1153,11 @@ a:hover{
   このゲームは完全なフィクションです。実在の人物・団体・地名・事件などとは一切関係ありません。
 </div>
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <div class="lightbox-card" onclick="event.stopPropagation()">
-    <div class="lightbox-image">
-      20260417_sugimoriyama_02.jpg<br>
-      白いものが山中に並んでいる。<br><br>
-      <span style="font-size:12px;color:#8a96a3;">画像データの一部が破損しています。</span>
-    </div>
-    <button class="lightbox-close" onclick="closeLightbox()">閉じる</button>
+<div class="image-modal" id="imageModal" onclick="closeImage()">
+  <div class="image-modal-card" onclick="event.stopPropagation()">
+    <img id="modalImage" src="" alt="拡大画像">
+    <div class="image-modal-caption" id="modalCaption"></div>
+    <button class="image-modal-close" onclick="closeImage()">閉じる</button>
   </div>
 </div>
 
@@ -1182,12 +1180,15 @@ a:hover{
 </div>
 
 <script>
-function openLightbox(){
-  document.getElementById("lightbox").classList.add("show");
+function openImage(src, caption){
+  document.getElementById("modalImage").src = src;
+  document.getElementById("modalCaption").textContent = caption;
+  document.getElementById("imageModal").classList.add("show");
 }
 
-function closeLightbox(){
-  document.getElementById("lightbox").classList.remove("show");
+function closeImage(){
+  document.getElementById("imageModal").classList.remove("show");
+  document.getElementById("modalImage").src = "";
 }
 
 function fakeSearch(){
