@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>はじまり</title>
+
+<style>
+:root{
+  --text:#f5f7fa;
+  --muted:rgba(255,255,255,.78);
+  --line:rgba(255,255,255,.16);
+  --card:rgba(15,20,28,.58);
+  --card-border:rgba(255,255,255,.12);
+  --button:#ffffff;
+  --button-text:#1f2328;
+  --red:#ff8b8b;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+  color:var(--text);
+  background:#0f141b;
+}
+
+body{
+  background:
+    linear-gradient(rgba(8,12,18,.58), rgba(8,12,18,.68)),
+    url("20260417_sugimoriyama_02.jpg") center center / cover no-repeat fixed;
+}
+
+.wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:36px 16px;
+}
+
+.panel{
+  width:min(760px,100%);
+  background:var(--card);
+  border:1px solid var(--card-border);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  overflow:hidden;
+}
+
+.inner{
+  padding:34px 30px 28px;
+}
+
+.kicker{
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.68);
+  margin-bottom:10px;
+}
+
+h1{
+  margin:0 0 18px;
+  font-size:34px;
+  line-height:1.35;
+  letter-spacing:.02em;
+  font-weight:900;
+}
+
+.text{
+  font-size:15px;
+  line-height:2.05;
+  color:var(--muted);
+}
+
+.text p{
+  margin:0 0 16px;
+}
+
+.text p:last-child{
+  margin-bottom:0;
+}
+
+.last-message{
+  display:block;
+  margin:12px 0;
+  color:#fff;
+  font-size:18px;
+  line-height:1.8;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.notice-title{
+  display:block;
+  margin-top:10px;
+  color:var(--red);
+  font-size:18px;
+  line-height:1.8;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.place{
+  color:#fff;
+  font-weight:800;
+}
+
+.bottom{
+  margin-top:28px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.note{
+  font-size:12px;
+  line-height:1.8;
+  color:rgba(255,255,255,.68);
+}
+
+.start-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 24px;
+  border-radius:999px;
+  background:var(--button);
+  color:var(--button-text);
+  text-decoration:none;
+  font-size:15px;
+  font-weight:900;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+  transition:.2s ease;
+}
+
+.start-btn:hover{
+  transform:translateY(-1px);
+  text-decoration:none;
+  opacity:.96;
+}
+
+.footer{
+  padding:0 30px 24px;
+  text-align:center;
+  font-size:11px;
+  line-height:1.8;
+  color:rgba(255,255,255,.56);
+}
+
+@media(max-width:640px){
+  .inner{
+    padding:26px 20px 22px;
+  }
+
+  .footer{
+    padding:0 20px 20px;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
+  .text{
+    font-size:14px;
+    line-height:2;
+  }
+
+  .text p{
+    margin-bottom:14px;
+  }
+
+  .last-message,
+  .notice-title{
+    font-size:16px;
+  }
+
+  .bottom{
+    display:block;
+  }
+
+  .start-btn{
+    width:100%;
+    margin-top:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div class="wrap">
+    <section class="panel">
+      <div class="inner">
+        <div class="kicker">Sugimori ARG / Prologue</div>
+        <h1>遥が消えた。</h1>
+
+        <div class="text">
+          <p>杉谷遥とは、十年前にネットで知り合った。<br>
+          同じ怪談好きとして話が合い、気づけば長い間、くだらない話から少し真面目な話まで送り合うようになっていた。</p>
+
+          <p>けれど二日前の朝、彼女は突然消えた。最後に届いたのは、</p>
+
+          <span class="last-message">「もし私が消えたら、探しに来てくれる？」</span>
+
+          <p>という一文だけだった。</p>
+
+          <p>彼女を探すため、あなたはここに来た。遥が暮らしているという<span class="place">杉守村</span>へ近づいた、その時ーー<br>
+          スマートフォンに、一件のローカル通知が届く。</p>
+
+          <span class="notice-title">「杉守山のこの一帯、墓標みたいに見えるんだけど、何か知ってる人いますか？」</span>
+        </div>
+
+        <div class="bottom">
+          <div class="note">
+            Moorii で情報を探してください。<br>
+            検索結果やページ内リンクをたどることで調査が進みます。
+          </div>
+          <a class="start-btn" href="index.html">Mooriiを開く →</a>
+        </div>
+      </div>
+
+      <div class="footer">
+        このゲームは完全なフィクションです。実在の人物・団体・地名・事件などとは一切関係ありません。
+      </div>
+    </section>
+  </div>
+</body>
+</html>
