@@ -1,24 +1,960 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>榊病院 公式サイト</title><style>
-:root{
-  --ink:#1d2733;--muted:#657385;--line:#d8dee8;--bg:#f3f6f9;--card:#fff;
-  --blue:#315f8f;--green:#0b6b4b;--red:#8b2635;--cream:#f8f4e8;--shadow:0 12px 30px rgba(24,38,56,.08);
-}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;line-height:1.75}
-a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
-.top{height:48px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5}
-.top .brand{font-weight:700;color:#21334a;letter-spacing:.04em}.top .back{font-size:13px;color:#66758a}
-.wrap{max-width:920px;margin:28px auto;padding:0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px;margin:18px 0}
-.kicker{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-h1{font-size:28px;line-height:1.3;margin:0 0 12px} h2{font-size:20px;margin:24px 0 8px}
-p{margin:9px 0}.muted{color:var(--muted);font-size:13px}.small{font-size:12px;color:var(--muted)}
-.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;color:#5a6878;background:#fbfcfd;margin:3px}
-.keyword{font-weight:700;color:#8a4b00;border-bottom:1px dotted #b88a39}.btn{display:inline-block;background:#24384f;color:#fff;border-radius:10px;padding:10px 15px;margin:6px 6px 0 0}
-.btn:hover{text-decoration:none;background:#172739}.danger{color:var(--red);font-weight:700}.notice{background:#fff8dd;border-left:4px solid #d0a52e;padding:12px 14px;border-radius:8px;margin:12px 0}.doc{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;background:#fff;border:1px solid #d7d0bf;padding:22px;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.footer{margin:32px auto 20px;text-align:center;font-size:12px;color:#8995a3}
-input,button{font:inherit} .searchline{display:flex;gap:8px;margin:14px 0}.searchline input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}.searchline button{border:0;border-radius:10px;background:#315f8f;color:#fff;padding:10px 16px;cursor:pointer}.result{border-left:3px solid #6d8fb1;padding:10px 0 10px 14px;margin:12px 0;background:#fff}.result .url{font-size:12px;color:#177245}.result a{font-size:17px;font-weight:650}
-@media(max-width:650px){.wrap{margin:18px auto}.card{padding:18px}h1{font-size:23px}.searchline{flex-direction:column}.top{padding:0 14px}}
-</style></head>
-<body><div class="top"><a class="back" href="index.html">← 戻る</a><div class="brand">榊病院</div></div>
-<div class="wrap"><div class="card"><div class="kicker">Official</div><h1>榊 病 院</h1><p>杉守村周辺の地域医療を担う総合診療医院です。</p><p><a class="btn" href="sakaki.html">榊隆文 医師紹介</a><a class="btn" href="sakaki_interview.html">院長インタビュー</a><a class="btn" href="surgery_report.html">手術出台率報告（10年）</a></p></div></div><div class="footer">検索結果は完全ではありません / sugimori-arg</div></body></html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>榊病院 公式サイト</title>
+
+  <style>
+    :root{
+      --ink:#1f2d3d;
+      --muted:#66758a;
+      --line:#dce4ee;
+      --bg:#f5f8fb;
+      --card:#ffffff;
+      --main:#176b7a;
+      --main2:#228ca0;
+      --deep:#124552;
+      --soft:#eef8fa;
+      --green:#2f7a5f;
+      --red:#9b2f3f;
+      --orange:#9a6a27;
+      --shadow:0 10px 28px rgba(24,38,56,.08);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+      line-height:1.75;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    .mini-top{
+      background:#eef5f7;
+      border-bottom:1px solid #d8e5e9;
+      color:#536273;
+      font-size:12px;
+    }
+
+    .mini-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:6px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+    }
+
+    .mini-links{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .mini-links a{
+      color:#536273;
+    }
+
+    .site-header{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+    }
+
+    .header-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:18px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+    }
+
+    .hospital-logo{
+      display:flex;
+      align-items:center;
+      gap:13px;
+    }
+
+    .logo-mark{
+      width:48px;
+      height:48px;
+      border-radius:12px;
+      background:var(--main);
+      color:#fff;
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      font-size:22px;
+      box-shadow:0 8px 18px rgba(23,107,122,.18);
+    }
+
+    .hospital-name-main{
+      font-size:25px;
+      line-height:1.25;
+      font-weight:850;
+      letter-spacing:.08em;
+      color:#1f3147;
+    }
+
+    .hospital-name-sub{
+      font-size:12px;
+      color:#758295;
+      letter-spacing:.12em;
+      margin-top:2px;
+    }
+
+    .header-info{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:3px;
+      font-size:12px;
+      color:#5e6c7d;
+      text-align:right;
+    }
+
+    .tel{
+      color:var(--main);
+      font-size:20px;
+      font-weight:900;
+      letter-spacing:.03em;
+    }
+
+    .main-nav{
+      background:var(--main);
+    }
+
+    .nav-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 20px;
+      display:flex;
+      flex-wrap:wrap;
+    }
+
+    .nav-inner a{
+      color:#fff;
+      padding:14px 19px;
+      font-size:14px;
+      border-left:1px solid rgba(255,255,255,.17);
+    }
+
+    .nav-inner a:last-child{
+      border-right:1px solid rgba(255,255,255,.17);
+    }
+
+    .nav-inner a:hover{
+      background:rgba(255,255,255,.13);
+      text-decoration:none;
+    }
+
+    .hero{
+      background:
+        linear-gradient(90deg, rgba(18,69,82,.94), rgba(23,107,122,.72), rgba(23,107,122,.22)),
+        radial-gradient(circle at 75% 35%, rgba(255,255,255,.45), transparent 34%),
+        linear-gradient(135deg, #e4f3f6, #ffffff);
+      min-height:300px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-90px;
+      bottom:-120px;
+      width:430px;
+      height:430px;
+      border-radius:50%;
+      background:rgba(255,255,255,.22);
+      border:42px solid rgba(255,255,255,.2);
+    }
+
+    .hero-inner{
+      max-width:1180px;
+      width:100%;
+      margin:0 auto;
+      padding:42px 20px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-copy{
+      max-width:610px;
+      color:#fff;
+    }
+
+    .hero-label{
+      display:inline-block;
+      border:1px solid rgba(255,255,255,.55);
+      border-radius:999px;
+      padding:5px 14px;
+      font-size:12px;
+      letter-spacing:.12em;
+      margin-bottom:16px;
+      background:rgba(255,255,255,.08);
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:36px;
+      line-height:1.35;
+      letter-spacing:.05em;
+      font-weight:900;
+      text-shadow:0 2px 16px rgba(0,0,0,.22);
+    }
+
+    .hero p{
+      margin:18px 0 0;
+      font-size:16px;
+      color:rgba(255,255,255,.9);
+      line-height:2;
+      text-shadow:0 2px 12px rgba(0,0,0,.2);
+    }
+
+    .quick-links{
+      max-width:1180px;
+      margin:-42px auto 0;
+      padding:0 20px;
+      position:relative;
+      z-index:3;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .quick-card{
+      background:#fff;
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      padding:18px;
+      min-height:112px;
+      transition:transform .16s,box-shadow .16s;
+    }
+
+    .quick-card:hover{
+      text-decoration:none;
+      transform:translateY(-2px);
+      box-shadow:0 14px 34px rgba(24,38,56,.13);
+    }
+
+    .quick-card .en{
+      color:var(--main2);
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:5px;
+    }
+
+    .quick-card h2{
+      margin:0 0 6px;
+      font-size:17px;
+      color:#24364d;
+    }
+
+    .quick-card p{
+      margin:0;
+      color:#6a788a;
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:28px auto 42px;
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:1fr 330px;
+      gap:24px;
+    }
+
+    .section{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:26px;
+      margin-bottom:22px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      border-bottom:2px solid #edf2f7;
+      padding-bottom:12px;
+      margin-bottom:18px;
+    }
+
+    .section-title{
+      margin:0;
+      font-size:22px;
+      color:#21334a;
+      line-height:1.3;
+    }
+
+    .section-title span{
+      display:block;
+      color:var(--main2);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:4px;
+      font-weight:700;
+    }
+
+    .more{
+      font-size:12px;
+      color:var(--main2);
+      white-space:nowrap;
+    }
+
+    .news-list{
+      display:grid;
+      gap:0;
+    }
+
+    .news-item{
+      display:grid;
+      grid-template-columns:108px 96px 1fr;
+      gap:12px;
+      align-items:start;
+      padding:13px 0;
+      border-bottom:1px solid #edf2f7;
+    }
+
+    .news-item:last-child{
+      border-bottom:0;
+    }
+
+    .news-date{
+      color:#66758a;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .news-tag{
+      display:inline-block;
+      text-align:center;
+      border-radius:999px;
+      border:1px solid #cfd9e5;
+      color:#536273;
+      font-size:11px;
+      padding:2px 8px;
+      background:#f8fafc;
+    }
+
+    .news-tag.important{
+      border-color:#d8b6bd;
+      color:var(--red);
+      background:#fff7f8;
+    }
+
+    .news-tag.doc{
+      border-color:#cfded8;
+      color:var(--green);
+      background:#f4fbf8;
+    }
+
+    .news-body{
+      font-size:14px;
+      color:#26384e;
+    }
+
+    .news-body a{
+      color:#1b6f87;
+      font-weight:700;
+    }
+
+    .news-body p{
+      margin:3px 0 0;
+      color:#7a8796;
+      font-size:12px;
+    }
+
+    .notice-box{
+      background:#fff9e8;
+      border-left:4px solid #d0a43a;
+      color:#66522a;
+      border-radius:10px;
+      padding:13px 15px;
+      font-size:13px;
+      margin-top:16px;
+    }
+
+    .about-text{
+      color:#39485a;
+      font-size:15px;
+    }
+
+    .department-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .department-card{
+      border:1px solid #e0e7ef;
+      border-radius:12px;
+      padding:14px;
+      background:#fbfdff;
+    }
+
+    .department-card strong{
+      display:block;
+      color:var(--main);
+      font-size:15px;
+      margin-bottom:3px;
+    }
+
+    .department-card span{
+      color:#6a788a;
+      font-size:12px;
+    }
+
+    .director-card{
+      display:grid;
+      grid-template-columns:110px 1fr;
+      gap:18px;
+      align-items:center;
+      border:1px solid #e0e7ef;
+      border-radius:14px;
+      background:#fbfdff;
+      padding:18px;
+    }
+
+    .director-photo{
+      width:110px;
+      height:130px;
+      border-radius:12px;
+      background:
+        linear-gradient(135deg, #dcebef, #ffffff);
+      border:1px solid #d7e3ea;
+      display:grid;
+      place-items:center;
+      color:#7a8796;
+      font-size:12px;
+      text-align:center;
+    }
+
+    .director-name{
+      font-size:22px;
+      font-weight:850;
+      color:#21334a;
+      margin-bottom:4px;
+      letter-spacing:.04em;
+    }
+
+    .director-role{
+      color:var(--main2);
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .btn-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:12px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      padding:9px 14px;
+      background:var(--main);
+      color:#fff;
+      font-size:13px;
+      font-weight:700;
+      border:1px solid var(--main);
+    }
+
+    .btn:hover{
+      background:var(--deep);
+      text-decoration:none;
+    }
+
+    .btn.sub{
+      background:#fff;
+      color:var(--main);
+      border-color:#b9d5dd;
+    }
+
+    .btn.sub:hover{
+      background:#f0fafc;
+    }
+
+    .history-list{
+      display:grid;
+      gap:10px;
+    }
+
+    .history-item{
+      display:grid;
+      grid-template-columns:86px 1fr;
+      gap:12px;
+      border-bottom:1px solid #edf2f7;
+      padding:10px 0;
+      font-size:14px;
+    }
+
+    .history-year{
+      color:var(--main);
+      font-weight:800;
+    }
+
+    .history-text{
+      color:#39485a;
+    }
+
+    .side{
+      min-width:0;
+    }
+
+    .side-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+      overflow:hidden;
+    }
+
+    .side-title{
+      background:#eef8fa;
+      border-bottom:1px solid var(--line);
+      padding:13px 16px;
+      font-weight:850;
+      color:#24364d;
+      font-size:15px;
+    }
+
+    .side-content{
+      padding:16px;
+    }
+
+    .time-table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:13px;
+    }
+
+    .time-table th,
+    .time-table td{
+      border-bottom:1px solid #e5edf2;
+      padding:8px 4px;
+      text-align:left;
+    }
+
+    .time-table th{
+      color:#536273;
+      width:38%;
+    }
+
+    .side-menu{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .side-menu li{
+      border-bottom:1px solid #edf2f7;
+    }
+
+    .side-menu li:last-child{
+      border-bottom:0;
+    }
+
+    .side-menu a{
+      display:block;
+      padding:11px 0;
+      color:#1b6f87;
+      font-size:14px;
+    }
+
+    .access-box{
+      background:#fbfdff;
+      border:1px solid #e0e7ef;
+      border-radius:12px;
+      padding:13px;
+      color:#506071;
+      font-size:13px;
+    }
+
+    .small{
+      color:#7a8796;
+      font-size:12px;
+    }
+
+    .footer{
+      background:#21334a;
+      color:rgba(255,255,255,.68);
+      text-align:center;
+      font-size:12px;
+      padding:26px 18px;
+      margin-top:30px;
+    }
+
+    @media(max-width:900px){
+      .quick-links{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .page{
+        grid-template-columns:1fr;
+      }
+
+      .header-inner{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .header-info{
+        text-align:left;
+      }
+    }
+
+    @media(max-width:650px){
+      .mini-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:4px;
+      }
+
+      .hospital-name-main{
+        font-size:21px;
+      }
+
+      .hero{
+        min-height:340px;
+      }
+
+      .hero h1{
+        font-size:30px;
+      }
+
+      .quick-links{
+        grid-template-columns:1fr;
+        margin-top:18px;
+      }
+
+      .page{
+        margin-top:20px;
+      }
+
+      .section{
+        padding:20px;
+      }
+
+      .news-item{
+        grid-template-columns:1fr;
+        gap:3px;
+      }
+
+      .department-grid{
+        grid-template-columns:1fr;
+      }
+
+      .director-card{
+        grid-template-columns:1fr;
+      }
+
+      .director-photo{
+        width:100%;
+        height:120px;
+      }
+
+      .history-item{
+        grid-template-columns:1fr;
+        gap:2px;
+      }
+
+      .nav-inner{
+        padding:0;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+      }
+
+      .nav-inner a{
+        white-space:nowrap;
+        padding:13px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mini-top">
+    <div class="mini-inner">
+      <div>榊病院 公式サイト</div>
+      <div class="mini-links">
+        <a href="#news">お知らせ</a>
+        <a href="#director">院長挨拶</a>
+        <a href="#access">交通アクセス</a>
+        <a href="index.html">Moorii検索へ戻る</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="hospital-logo">
+        <div class="logo-mark">榊</div>
+        <div>
+          <div class="hospital-name-main">榊病院</div>
+          <div class="hospital-name-sub">SAKAKI GENERAL HOSPITAL</div>
+        </div>
+      </div>
+
+      <div class="header-info">
+        <div>〒000-0000 京都府杉守村 榊原地区</div>
+        <div class="tel">TEL 000-000-0000</div>
+        <div>受付時間 8:30〜11:30 / 休診日 土曜・日曜・祝日</div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="nav-inner">
+      <a href="#about">当院について</a>
+      <a href="#news">お知らせ</a>
+      <a href="#director">院長挨拶</a>
+      <a href="#access">アクセス</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-label">地域医療とともに</div>
+        <h1>杉守村の暮らしを、<br>近くで支える医療へ。</h1>
+        <p>
+          榊病院は、杉守村および周辺地域の外来診療、健康診断、在宅医療支援を行う地域医療機関です。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-links">
+    <a class="quick-card" href="#news">
+      <div class="en">Information</div>
+      <h2>お知らせ</h2>
+      <p>休診、担当医変更、院内資料のご案内。</p>
+    </a>
+
+    <a class="quick-card" href="#about">
+      <div class="en">About</div>
+      <h2>当院について</h2>
+      <p>病院概要、名称変更、地域連携について。</p>
+    </a>
+
+    <a class="quick-card" href="#director">
+      <div class="en">Director</div>
+      <h2>院長挨拶</h2>
+      <p>院長 榊隆文より、地域の皆さまへ。</p>
+    </a>
+
+    <a class="quick-card" href="#access">
+      <div class="en">Access</div>
+      <h2>アクセス</h2>
+      <p>所在地、受付時間、来院前のご案内。</p>
+    </a>
+  </section>
+
+  <main class="page">
+    <section>
+      <div class="section" id="news">
+        <div class="section-head">
+          <h2 class="section-title"><span>Information</span>お知らせ</h2>
+          <a class="more" href="#">一覧を見る</a>
+        </div>
+
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-date">2026.04.18</div>
+            <div><span class="news-tag doc">院内資料</span></div>
+            <div class="news-body">
+              <a href="surgery_report.html">手術出台率報告（10年）</a>
+              <p>過年度手術記録の集計資料を掲載しました。閲覧には院内資料番号が必要になる場合があります。</p>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2026.04.11</div>
+            <div><span class="news-tag">外来</span></div>
+            <div class="news-body">
+              4月下旬の外来担当医について
+              <p>総合診療外来の一部時間帯で担当医が変更となります。</p>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2026.03.28</div>
+            <div><span class="news-tag">健診</span></div>
+            <div class="news-body">
+              学校健診期間中の一般健診予約について
+              <p>地域学校健診の実施に伴い、一部時間帯の予約枠を調整しています。</p>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2018.04.01</div>
+            <div><span class="news-tag important">重要</span></div>
+            <div class="news-body">
+              病院名称変更および院長交代のお知らせ
+              <p>
+                旧名称から榊病院へ名称を変更しました。
+                前院長の急逝に伴い、同日付で榊隆文医師が院長に就任しました。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="notice-box">
+          休診・担当医変更などの急なお知らせは、院内掲示板および受付窓口でもご案内しています。
+        </div>
+      </div>
+
+      <div class="section" id="about">
+        <div class="section-head">
+          <h2 class="section-title"><span>About Hospital</span>当院について</h2>
+        </div>
+
+        <p class="about-text">
+          榊病院は、杉守村周辺の地域医療を担う病院として、外来診療、各種検査、学校健診、在宅医療支援を行っています。
+          地域の生活に近い医療機関として、患者さまが相談しやすい環境づくりを大切にしています。
+        </p>
+
+        <p class="about-text">
+          現在は、院長 榊隆文のもと、総合診療を中心に地域医療機関・学校・行政との連携を進めています。
+        </p>
+
+        <div class="history-list">
+          <div class="history-item">
+            <div class="history-year">2018年</div>
+            <div class="history-text">
+              病院名称を榊病院へ変更。前院長の急逝に伴い、榊隆文医師が院長に就任。
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div class="history-year">2021年</div>
+            <div class="history-text">
+              地域健診および学校健診の受託体制を拡充。
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div class="history-year">2026年</div>
+            <div class="history-text">
+              過年度手術記録の集計資料を院内資料として整理。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="director">
+        <div class="section-head">
+          <h2 class="section-title"><span>Message</span>院長挨拶</h2>
+        </div>
+
+        <div class="director-card">
+          <div class="director-photo">写真準備中</div>
+          <div>
+            <div class="director-name">榊 隆文</div>
+            <div class="director-role">榊病院 院長 / 総合診療・外科</div>
+            <p class="about-text">
+              地域の皆さまが日常の中で安心して医療にアクセスできるよう、
+              榊病院では総合診療と地域連携を中心とした体制づくりを進めています。
+            </p>
+
+            <div class="btn-row">
+              <a class="btn" href="sakaki.html">榊隆文 医師紹介</a>
+              <a class="btn sub" href="sakaki_interview.html">院長インタビュー</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="side-card">
+        <div class="side-title">診療受付時間</div>
+        <div class="side-content">
+          <table class="time-table">
+            <tr>
+              <th>受付時間</th>
+              <td>8:30〜11:30</td>
+            </tr>
+            <tr>
+              <th>診療時間</th>
+              <td>9:00〜12:00<br>14:00〜16:30</td>
+            </tr>
+            <tr>
+              <th>休診日</th>
+              <td>土曜・日曜・祝日</td>
+            </tr>
+          </table>
+          <p class="small">診療科により時間が異なる場合があります。</p>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-title">院長関連</div>
+        <div class="side-content">
+          <ul class="side-menu">
+            <li><a href="sakaki.html">榊隆文 医師紹介</a></li>
+            <li><a href="sakaki_interview.html">院長インタビュー</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="side-card" id="access">
+        <div class="side-title">交通アクセス</div>
+        <div class="side-content">
+          <div class="access-box">
+            〒000-0000<br>
+            京都府杉守村 榊原地区<br>
+            榊病院
+          </div>
+          <p class="small">
+            村営バス「榊病院前」下車すぐ。天候により運行時刻が変更される場合があります。
+          </p>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    このサイトは架空の病院サイトです。実在の人物・団体・地名・医療機関とは関係ありません。
+  </footer>
+</body>
+</html>
