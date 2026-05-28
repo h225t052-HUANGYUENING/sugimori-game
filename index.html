@@ -772,42 +772,56 @@
     }
 
     function search(){
-      const q=document.getElementById('q').value.trim();
-      const box=document.getElementById('results');
-      const home=document.getElementById('homeblocks');
+  const q=document.getElementById('q').value.trim();
+  const box=document.getElementById('results');
+  const home=document.getElementById('homeblocks');
 
-      if(!q){
-        box.style.display='none';
-        showSavedPage();
-        return;
+  if(!q){
+    box.style.display='none';
+    showSavedPage();
+    return;
+  }
+
+  let res=[];
+
+  if(q.includes("巡山祭後半部分") || q.includes("後半部分")){
+    res=[
+      {
+        keys:["巡山祭後半部分","後半部分"],
+        title:"巡山祭の知られていない部分と神隠しの真相（削除済み）",
+        desc:"削除済みとして残っている知新のキャッシュ。巡山祭の後半部分と神隠しについて触れている。",
+        url:"chishin.local/deleted/20160425-maki",
+        link:"forum.html"
       }
+    ];
+  }else{
+    res=data
+      .filter(r=>r.keys.some(k=>q.includes(k)||k.includes(q)))
+      .slice(0,3);
+  }
 
-      const res=data
-        .filter(r=>r.keys.some(k=>q.includes(k)||k.includes(q)))
-        .slice(0,3);
+  box.style.display='block';
+  home.style.display='none';
 
-      box.style.display='block';
-      home.style.display='none';
+  if(!res.length){
+    box.innerHTML=`
+      <div class="result-head">検索結果</div>
+      <div class="no-result">該当する検索結果はありません。</div>
+    `;
+    return;
+  }
 
-      if(!res.length){
-        box.innerHTML=`
-          <div class="result-head">検索結果</div>
-          <div class="no-result">該当する検索結果はありません。</div>
-        `;
-        return;
-      }
-
-      box.innerHTML=`
-        <div class="result-head">約 ${res.length} 件の検索結果</div>
-        ${res.map(r=>`
-          <div class="result">
-            <div class="url">${r.url}</div>
-            <a href="${r.link}" onclick="recordPage('${escapeQuote(r.title)}','${escapeQuote(r.url)}','${escapeQuote(r.link)}','${escapeQuote(r.desc)}')">${r.title}</a>
-            <div class="desc">${r.desc}</div>
-          </div>
-        `).join('')}
-      `;
-    }
+  box.innerHTML=`
+    <div class="result-head">約 ${res.length} 件の検索結果</div>
+    ${res.map(r=>`
+      <div class="result">
+        <div class="url">${r.url}</div>
+        <a href="${r.link}" onclick="recordPage('${escapeQuote(r.title)}','${escapeQuote(r.url)}','${escapeQuote(r.link)}','${escapeQuote(r.desc)}')">${r.title}</a>
+        <div class="desc">${r.desc}</div>
+      </div>
+    `).join('')}
+  `;
+}
   </script>
 </body>
 </html>
