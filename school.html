@@ -1,30 +1,1248 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>私立北杉高校</title><style>
-:root{
-  --ink:#1d2733;--muted:#657385;--line:#d8dee8;--bg:#f3f6f9;--card:#fff;
-  --blue:#315f8f;--green:#0b6b4b;--red:#8b2635;--cream:#f8f4e8;--shadow:0 12px 30px rgba(24,38,56,.08);
-}
-*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;line-height:1.75}
-a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
-.top{height:48px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:5}
-.top .brand{font-weight:700;color:#21334a;letter-spacing:.04em}.top .back{font-size:13px;color:#66758a}
-.wrap{max-width:920px;margin:28px auto;padding:0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px;margin:18px 0}
-.kicker{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
-h1{font-size:28px;line-height:1.3;margin:0 0 12px} h2{font-size:20px;margin:24px 0 8px}
-p{margin:9px 0}.muted{color:var(--muted);font-size:13px}.small{font-size:12px;color:var(--muted)}
-.badge{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;color:#5a6878;background:#fbfcfd;margin:3px}
-.keyword{font-weight:700;color:#8a4b00;border-bottom:1px dotted #b88a39}.btn{display:inline-block;background:#24384f;color:#fff;border-radius:10px;padding:10px 15px;margin:6px 6px 0 0}
-.btn:hover{text-decoration:none;background:#172739}.danger{color:var(--red);font-weight:700}.notice{background:#fff8dd;border-left:4px solid #d0a52e;padding:12px 14px;border-radius:8px;margin:12px 0}.doc{font-family:"Yu Mincho","Hiragino Mincho ProN",serif;background:#fff;border:1px solid #d7d0bf;padding:22px;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-.footer{margin:32px auto 20px;text-align:center;font-size:12px;color:#8995a3}
-input,button{font:inherit} .searchline{display:flex;gap:8px;margin:14px 0}.searchline input{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}.searchline button{border:0;border-radius:10px;background:#315f8f;color:#fff;padding:10px 16px;cursor:pointer}.result{border-left:3px solid #6d8fb1;padding:10px 0 10px 14px;margin:12px 0;background:#fff}.result .url{font-size:12px;color:#177245}.result a{font-size:17px;font-weight:650}
-@media(max-width:650px){.wrap{margin:18px auto}.card{padding:18px}h1{font-size:23px}.searchline{flex-direction:column}.top{padding:0 14px}}
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>私立北杉高等学校</title>
 
-body{background:#f6f8fb}.schoolhead{background:#173d66;color:#fff;padding:32px 22px}.schoolhead .wrap{margin:0 auto}.schoolhead h1{color:#fff}.navlinks a{color:#fff;margin-right:18px;font-size:13px}
-</style></head><body><div class="top"><a class="back" href="index.html">← 検索へ戻る</a><div class="brand">私立北杉高等学校</div></div>
-<div class="schoolhead"><div class="wrap"><h1>私立 北杉高等学校</h1><p>自然と共に学ぶ、地域密着型の小規模校</p><div class="navlinks"><a href="#news">お知らせ</a><a href="#search">校内検索</a></div></div></div>
-<div class="wrap">
-<div class="card" id="news"><h2>お知らせ</h2><p><a href="medical.html">2026年度 三年生体検結果</a></p><p class="small">在校生・保護者向け資料</p></div>
-<div class="card" id="search"><h2>校内検索</h2><div class="searchline"><input id="schoolQ" placeholder="生徒名・資料名を入力" onkeydown="if(event.key==='Enter')schoolSearch()"><button onclick="schoolSearch()">検索</button></div><div id="schoolResults"></div></div>
-<div class="card"><h2>学校案内</h2><p>杉守村にある小規模な私立高校です。地域医療機関と連携し、定期健康診断を実施しています。</p></div>
-</div><script>
-function schoolSearch(){const q=document.getElementById('schoolQ').value.trim();const r=document.getElementById('schoolResults');if(q.includes('杣木')||q.includes('真白')){r.innerHTML='<div class="result"><a href="mashiro.html">杣木真白 行方不明報告</a><div class="url">kitasugi-high.example/archive/mashiro</div><div class="desc">2016年、巡山祭当日に行方不明となった生徒に関する記録。</div></div>';}else{r.innerHTML='<p class="muted">該当する検索結果はありません。</p>';}}
-</script></body></html>
+  <style>
+    :root{
+      --ink:#1f2d3d;
+      --muted:#66758a;
+      --line:#dce4ee;
+      --bg:#f5f7fa;
+      --card:#ffffff;
+      --main:#16446f;
+      --main2:#23649b;
+      --accent:#8a6d2f;
+      --green:#2d6f58;
+      --red:#9b2f3f;
+      --shadow:0 10px 28px rgba(24,38,56,.08);
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+      line-height:1.75;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    .mini-top{
+      background:#f0f4f8;
+      border-bottom:1px solid #dbe3ec;
+      font-size:12px;
+      color:#536273;
+    }
+
+    .mini-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:6px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:14px;
+    }
+
+    .mini-links{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .mini-links a{
+      color:#536273;
+    }
+
+    .site-header{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+    }
+
+    .header-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:18px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+    }
+
+    .school-logo{
+      display:flex;
+      align-items:center;
+      gap:13px;
+    }
+
+    .logo-mark{
+      width:46px;
+      height:46px;
+      border-radius:50%;
+      border:2px solid var(--main);
+      display:grid;
+      place-items:center;
+      color:var(--main);
+      font-weight:900;
+      font-size:18px;
+      background:#f8fbff;
+    }
+
+    .school-name-main{
+      font-size:24px;
+      line-height:1.25;
+      font-weight:800;
+      letter-spacing:.06em;
+      color:#1f3147;
+    }
+
+    .school-name-sub{
+      font-size:12px;
+      color:#758295;
+      letter-spacing:.12em;
+      margin-top:2px;
+    }
+
+    .header-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .header-btn{
+      border:1px solid #cfd9e5;
+      border-radius:999px;
+      padding:8px 14px;
+      font-size:13px;
+      color:#415168;
+      background:#fff;
+    }
+
+    .header-btn.primary{
+      background:var(--main);
+      color:#fff;
+      border-color:var(--main);
+    }
+
+    .main-nav{
+      background:var(--main);
+    }
+
+    .nav-inner{
+      max-width:1180px;
+      margin:0 auto;
+      padding:0 20px;
+      display:flex;
+      flex-wrap:wrap;
+    }
+
+    .nav-inner a{
+      color:#fff;
+      padding:14px 20px;
+      font-size:14px;
+      border-left:1px solid rgba(255,255,255,.16);
+    }
+
+    .nav-inner a:last-child{
+      border-right:1px solid rgba(255,255,255,.16);
+    }
+
+    .nav-inner a:hover{
+      background:rgba(255,255,255,.12);
+      text-decoration:none;
+    }
+
+    .hero{
+      position:relative;
+      min-height:420px;
+      background:
+        linear-gradient(90deg, rgba(10,30,50,.72), rgba(10,30,50,.28), rgba(10,30,50,.08)),
+        url("school.png") center center / cover no-repeat;
+      display:flex;
+      align-items:center;
+    }
+
+    .hero-inner{
+      max-width:1180px;
+      width:100%;
+      margin:0 auto;
+      padding:52px 20px;
+    }
+
+    .hero-copy{
+      max-width:560px;
+      color:#fff;
+    }
+
+    .hero-label{
+      display:inline-block;
+      border:1px solid rgba(255,255,255,.55);
+      border-radius:999px;
+      padding:5px 14px;
+      font-size:12px;
+      letter-spacing:.12em;
+      margin-bottom:16px;
+      background:rgba(255,255,255,.08);
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:42px;
+      line-height:1.35;
+      letter-spacing:.05em;
+      font-weight:900;
+      text-shadow:0 2px 16px rgba(0,0,0,.28);
+    }
+
+    .hero p{
+      margin:18px 0 0;
+      font-size:16px;
+      color:rgba(255,255,255,.88);
+      line-height:2;
+      text-shadow:0 2px 12px rgba(0,0,0,.28);
+    }
+
+    .quick-links{
+      max-width:1180px;
+      margin:-44px auto 0;
+      padding:0 20px;
+      position:relative;
+      z-index:3;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .quick-card{
+      background:#fff;
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      padding:18px 18px;
+      min-height:108px;
+      transition:transform .16s, box-shadow .16s;
+    }
+
+    .quick-card:hover{
+      text-decoration:none;
+      transform:translateY(-2px);
+      box-shadow:0 14px 34px rgba(24,38,56,.13);
+    }
+
+    .quick-card .en{
+      color:var(--main2);
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:5px;
+    }
+
+    .quick-card h2{
+      margin:0 0 6px;
+      font-size:17px;
+      color:#24364d;
+    }
+
+    .quick-card p{
+      margin:0;
+      color:#6a788a;
+      font-size:12px;
+      line-height:1.6;
+    }
+
+    .page{
+      max-width:1180px;
+      margin:28px auto 42px;
+      padding:0 20px;
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:24px;
+    }
+
+    .section{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:26px;
+      margin-bottom:22px;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      border-bottom:2px solid #edf2f7;
+      padding-bottom:12px;
+      margin-bottom:18px;
+    }
+
+    .section-title{
+      margin:0;
+      font-size:22px;
+      color:#21334a;
+      line-height:1.3;
+    }
+
+    .section-title span{
+      display:block;
+      color:var(--main2);
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      margin-bottom:4px;
+      font-weight:700;
+    }
+
+    .more{
+      font-size:12px;
+      color:var(--main2);
+      white-space:nowrap;
+    }
+
+    .about-text{
+      font-size:15px;
+      color:#39485a;
+    }
+
+    .about-grid{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .about-box{
+      border:1px solid #e0e7ef;
+      border-radius:12px;
+      padding:15px;
+      background:#fbfdff;
+    }
+
+    .about-box strong{
+      display:block;
+      color:var(--main);
+      font-size:18px;
+      margin-bottom:3px;
+    }
+
+    .about-box span{
+      color:#6a788a;
+      font-size:12px;
+    }
+
+    .news-list{
+      display:grid;
+      gap:0;
+    }
+
+    .news-item{
+      display:grid;
+      grid-template-columns:108px 92px 1fr;
+      gap:12px;
+      align-items:start;
+      padding:13px 0;
+      border-bottom:1px solid #edf2f7;
+    }
+
+    .news-item:last-child{
+      border-bottom:0;
+    }
+
+    .news-date{
+      color:#66758a;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .news-tag{
+      display:inline-block;
+      text-align:center;
+      border-radius:999px;
+      border:1px solid #cfd9e5;
+      color:#536273;
+      font-size:11px;
+      padding:2px 8px;
+      background:#f8fafc;
+    }
+
+    .news-tag.important{
+      border-color:#d8b6bd;
+      color:var(--red);
+      background:#fff7f8;
+    }
+
+    .news-body{
+      font-size:14px;
+      color:#26384e;
+    }
+
+    .news-body button{
+      border:0;
+      background:transparent;
+      padding:0;
+      color:var(--main2);
+      cursor:pointer;
+      font:inherit;
+      text-align:left;
+    }
+
+    .news-body button:hover{
+      text-decoration:underline;
+    }
+
+    .news-body p{
+      margin:3px 0 0;
+      color:#7a8796;
+      font-size:12px;
+    }
+
+    .board-note{
+      background:#fff9e8;
+      border-left:4px solid #d0a43a;
+      color:#66522a;
+      border-radius:10px;
+      padding:13px 15px;
+      font-size:13px;
+      margin-top:16px;
+    }
+
+    .facility-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+
+    .facility-card{
+      border:1px solid #e0e7ef;
+      border-radius:12px;
+      padding:16px;
+      background:#fbfdff;
+    }
+
+    .facility-card h3{
+      margin:0 0 7px;
+      font-size:15px;
+      color:#26384e;
+    }
+
+    .facility-card p{
+      margin:0;
+      font-size:13px;
+      color:#66758a;
+    }
+
+    .searchline{
+      display:flex;
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .searchline input{
+      flex:1;
+      border:1px solid #cfd9e5;
+      border-radius:10px;
+      padding:10px 12px;
+      background:#fff;
+    }
+
+    .searchline button{
+      border:0;
+      border-radius:10px;
+      background:var(--main);
+      color:#fff;
+      padding:10px 16px;
+      cursor:pointer;
+    }
+
+    .searchline button:hover{
+      background:#0f365a;
+    }
+
+    .result{
+      border-left:3px solid #6d8fb1;
+      padding:10px 0 10px 14px;
+      margin:14px 0;
+      background:#fff;
+    }
+
+    .result .url{
+      color:#177245;
+      font-size:12px;
+    }
+
+    .result a{
+      color:#1f5f9a;
+      font-size:17px;
+      font-weight:700;
+    }
+
+    .result .desc{
+      color:#5e6c7d;
+      font-size:13px;
+      margin-top:3px;
+    }
+
+    .muted{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .side{
+      min-width:0;
+    }
+
+    .side-card{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+      overflow:hidden;
+    }
+
+    .side-title{
+      background:#f0f5fa;
+      border-bottom:1px solid var(--line);
+      padding:13px 16px;
+      font-weight:800;
+      color:#24364d;
+      font-size:15px;
+    }
+
+    .side-content{
+      padding:16px;
+    }
+
+    .side-menu{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .side-menu li{
+      border-bottom:1px solid #edf2f7;
+    }
+
+    .side-menu li:last-child{
+      border-bottom:0;
+    }
+
+    .side-menu a,
+    .side-menu button{
+      display:block;
+      width:100%;
+      padding:11px 0;
+      text-align:left;
+      border:0;
+      background:transparent;
+      color:#2d6292;
+      font-size:14px;
+      cursor:pointer;
+    }
+
+    .side-menu button:hover{
+      text-decoration:underline;
+    }
+
+    .access-box{
+      background:#fbfdff;
+      border:1px solid #e0e7ef;
+      border-radius:12px;
+      padding:13px;
+      color:#506071;
+      font-size:13px;
+    }
+
+    .small{
+      color:#7a8796;
+      font-size:12px;
+    }
+
+    .footer{
+      background:#21334a;
+      color:rgba(255,255,255,.68);
+      text-align:center;
+      font-size:12px;
+      padding:26px 18px;
+      margin-top:30px;
+    }
+
+    .modal-bg{
+      display:none;
+      position:fixed;
+      inset:0;
+      z-index:100;
+      background:rgba(20,28,38,.54);
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+
+    .modal-bg.show{
+      display:flex;
+    }
+
+    .modal{
+      width:min(570px,100%);
+      background:#fff;
+      border-radius:18px;
+      box-shadow:0 24px 70px rgba(0,0,0,.3);
+      overflow:hidden;
+      border:1px solid #dce3ec;
+    }
+
+    .modal-head{
+      background:var(--main);
+      color:#fff;
+      padding:18px 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    .modal-head h2{
+      margin:0;
+      font-size:18px;
+    }
+
+    .close{
+      background:transparent;
+      border:0;
+      color:#fff;
+      font-size:24px;
+      line-height:1;
+      cursor:pointer;
+    }
+
+    .modal-body{
+      padding:22px;
+    }
+
+    .hint{
+      font-size:12px;
+      color:#657385;
+      background:#f7f9fc;
+      border:1px solid #e0e6ee;
+      border-radius:10px;
+      padding:10px 12px;
+      margin:12px 0;
+    }
+
+    .form-row{
+      margin-bottom:13px;
+    }
+
+    .form-row label{
+      display:block;
+      font-size:13px;
+      color:#536274;
+      margin-bottom:5px;
+    }
+
+    .form-row input{
+      width:100%;
+      border:1px solid #cfd8e3;
+      border-radius:10px;
+      padding:10px 12px;
+    }
+
+    .modal-actions{
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+      margin-top:16px;
+    }
+
+    .modal-actions button{
+      border:0;
+      border-radius:10px;
+      padding:10px 15px;
+      cursor:pointer;
+    }
+
+    .cancel-btn{
+      background:#eef2f6;
+      color:#334255;
+    }
+
+    .submit-btn{
+      background:var(--main);
+      color:#fff;
+    }
+
+    .error{
+      display:none;
+      margin-top:12px;
+      color:var(--red);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .medical-result{
+      display:none;
+      border:1px solid #d7d0bf;
+      background:#fffdf7;
+      border-radius:10px;
+      padding:18px;
+      margin-top:16px;
+      font-family:"Yu Mincho","Hiragino Mincho ProN",serif;
+      color:#2d2d2d;
+    }
+
+    .medical-result h3{
+      margin:0 0 12px;
+      font-size:18px;
+      border-bottom:1px solid #d7d0bf;
+      padding-bottom:8px;
+    }
+
+    .medical-table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:14px;
+      margin-top:8px;
+    }
+
+    .medical-table th,
+    .medical-table td{
+      border-bottom:1px solid #e6dfcf;
+      padding:7px 6px;
+      text-align:left;
+      vertical-align:top;
+    }
+
+    .medical-table th{
+      width:34%;
+      color:#5e5548;
+      font-weight:700;
+    }
+
+    .stamp{
+      display:inline-block;
+      border:2px solid var(--red);
+      color:var(--red);
+      border-radius:6px;
+      padding:4px 10px;
+      font-weight:700;
+      transform:rotate(-4deg);
+      margin-top:12px;
+    }
+
+    @media(max-width:900px){
+      .quick-links{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .page{
+        grid-template-columns:1fr;
+      }
+
+      .header-inner{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .header-actions{
+        justify-content:flex-start;
+      }
+    }
+
+    @media(max-width:650px){
+      .mini-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:4px;
+      }
+
+      .school-name-main{
+        font-size:20px;
+      }
+
+      .hero{
+        min-height:360px;
+      }
+
+      .hero h1{
+        font-size:30px;
+      }
+
+      .quick-links{
+        grid-template-columns:1fr;
+        margin-top:18px;
+      }
+
+      .page{
+        margin-top:20px;
+      }
+
+      .section{
+        padding:20px;
+      }
+
+      .about-grid,
+      .facility-grid{
+        grid-template-columns:1fr;
+      }
+
+      .news-item{
+        grid-template-columns:1fr;
+        gap:3px;
+      }
+
+      .searchline{
+        flex-direction:column;
+      }
+
+      .nav-inner{
+        padding:0;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+      }
+
+      .nav-inner a{
+        white-space:nowrap;
+        padding:13px 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mini-top">
+    <div class="mini-inner">
+      <div>私立北杉高等学校 公式サイト</div>
+      <div class="mini-links">
+        <a href="#">在校生・保護者の方へ</a>
+        <a href="#">受験生の方へ</a>
+        <a href="#">卒業生の方へ</a>
+        <a href="index.html">Moorii検索へ戻る</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="school-logo">
+        <div class="logo-mark">北</div>
+        <div>
+          <div class="school-name-main">私立北杉高等学校</div>
+          <div class="school-name-sub">KITASUGI PRIVATE HIGH SCHOOL</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a class="header-btn" href="#access">アクセス</a>
+        <a class="header-btn" href="#search">校内検索</a>
+        <a class="header-btn primary" href="#news">お知らせ</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="nav-inner">
+      <a href="#about">学校紹介</a>
+      <a href="#life">学校生活</a>
+      <a href="#news">お知らせ</a>
+      <a href="#facility">施設紹介</a>
+      <a href="#search">校内検索</a>
+      <a href="#access">アクセス</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-label">地域とともに学ぶ</div>
+        <h1>山のふもとで、<br>静かに育つ学び。</h1>
+        <p>
+          私立北杉高等学校は、杉守村の自然と地域のつながりを大切にしながら、
+          生徒一人ひとりの生活に寄り添う学びを行っています。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-links">
+    <a class="quick-card" href="#about">
+      <div class="en">About</div>
+      <h2>学校紹介</h2>
+      <p>北杉高校の教育方針と地域連携について。</p>
+    </a>
+
+    <a class="quick-card" href="#news">
+      <div class="en">News</div>
+      <h2>お知らせ</h2>
+      <p>在校生・保護者向けの連絡はこちら。</p>
+    </a>
+
+    <a class="quick-card" href="#facility">
+      <div class="en">Facility</div>
+      <h2>施設整備</h2>
+      <p>校舎補修・保健室設備更新など。</p>
+    </a>
+
+    <a class="quick-card" href="#search">
+      <div class="en">Search</div>
+      <h2>校内検索</h2>
+      <p>過年度資料・校内保存記録の検索。</p>
+    </a>
+  </section>
+
+  <main class="page">
+    <section>
+      <div class="section" id="about">
+        <div class="section-head">
+          <h2 class="section-title"><span>About School</span>学校紹介</h2>
+        </div>
+
+        <p class="about-text">
+          私立北杉高等学校は、杉守山のふもとにある高等学校です。
+          自然学習、基礎学習、地域行事への参加を通して、生徒が自分の生活と向き合いながら学べる環境づくりを行っています。
+        </p>
+
+        <p class="about-text">
+          学校からのお知らせは本サイトにも掲載していますが、日程変更や地域行事に関する連絡は、
+          校内掲示板および村内掲示欄でも随時案内しています。
+        </p>
+
+        <div class="about-grid">
+          <div class="about-box">
+            <strong>少人数</strong>
+            <span>日々の生活に近い距離で学習を支援します。</span>
+          </div>
+          <div class="about-box">
+            <strong>地域連携</strong>
+            <span>村の行事や施設と連携した活動を行います。</span>
+          </div>
+          <div class="about-box">
+            <strong>個別相談</strong>
+            <span>進路・生活面での相談を継続的に行います。</span>
+          </div>
+        </div>
+
+        <div class="board-note">
+          行事予定や配布物の詳細は、校内掲示板および杉守村役場前の掲示欄もあわせてご確認ください。
+        </div>
+      </div>
+
+      <div class="section" id="news">
+        <div class="section-head">
+          <h2 class="section-title"><span>Information</span>お知らせ</h2>
+          <a class="more" href="#">一覧を見る</a>
+        </div>
+
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-date">2026.05.21</div>
+            <div><span class="news-tag important">在校生</span></div>
+            <div class="news-body">
+              <button onclick="openMedicalModal()">2026年度 三年生 健康診断結果について</button>
+              <p>在校生・保護者向け資料。閲覧には本人確認が必要です。</p>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2026.05.09</div>
+            <div><span class="news-tag">施設</span></div>
+            <div class="news-body">
+              南校舎二階廊下の補修工事について
+              <p>作業期間中、一部教室への通行経路が変更になります。</p>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2026.04.28</div>
+            <div><span class="news-tag">行事</span></div>
+            <div class="news-body">
+              杉守村 春季清掃活動への参加について
+              <p>集合場所および持ち物は、校内掲示板をご確認ください。</p>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2026.04.12</div>
+            <div><span class="news-tag">保護者</span></div>
+            <div class="news-body">
+              個人面談期間のお知らせ
+              <p>日時の詳細は各学級にて配布した文書をご確認ください。</p>
+            </div>
+          </div>
+
+          <div class="news-item">
+            <div class="news-date">2026.03.30</div>
+            <div><span class="news-tag">地域</span></div>
+            <div class="news-body">
+              新年度の通学路確認について
+              <p>山側の旧道は天候により通行しにくい場合があります。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="facility">
+        <div class="section-head">
+          <h2 class="section-title"><span>Facility</span>施設紹介・校舎整備</h2>
+        </div>
+
+        <div class="facility-grid">
+          <div class="facility-card">
+            <h3>旧特別教室棟の補修</h3>
+            <p>雨漏り対策および窓枠の交換を順次行っています。作業中の区域には立ち入らないようお願いいたします。</p>
+          </div>
+
+          <div class="facility-card">
+            <h3>保健室設備の更新</h3>
+            <p>地域医療機関の協力により、検査機器の一部更新を行いました。</p>
+          </div>
+
+          <div class="facility-card">
+            <h3>体育館裏通路の夜間照明</h3>
+            <p>下校時の安全確保のため、照明設備の点検を実施しています。</p>
+          </div>
+
+          <div class="facility-card">
+            <h3>掲示板の整理</h3>
+            <p>校内および地域掲示欄の掲示物を定期的に整理しています。古い資料は事務室までお問い合わせください。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" id="search">
+        <div class="section-head">
+          <h2 class="section-title"><span>Internal Search</span>校内検索</h2>
+        </div>
+
+        <p class="muted">生徒名・資料名などを入力してください。</p>
+
+        <div class="searchline">
+          <input id="schoolQ" placeholder="生徒名・資料名を入力" onkeydown="if(event.key==='Enter')schoolSearch()">
+          <button onclick="schoolSearch()">検索</button>
+        </div>
+
+        <div id="schoolResults"></div>
+      </div>
+    </section>
+
+    <aside class="side">
+      <div class="side-card">
+        <div class="side-title">在校生・保護者の方へ</div>
+        <div class="side-content">
+          <ul class="side-menu">
+            <li><button onclick="openMedicalModal()">健康診断結果の確認</button></li>
+            <li><a href="#news">配布資料・お知らせ</a></li>
+            <li><a href="#facility">施設整備について</a></li>
+            <li><a href="#search">校内検索</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="side-card" id="life">
+        <div class="side-title">学校生活</div>
+        <div class="side-content">
+          <ul class="side-menu">
+            <li><a href="#">年間行事</a></li>
+            <li><a href="#">部活動</a></li>
+            <li><a href="#">進路相談</a></li>
+            <li><a href="#">地域活動</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="side-card" id="access">
+        <div class="side-title">アクセス</div>
+        <div class="side-content">
+          <div class="access-box">
+            〒000-0000<br>
+            京都府杉守村 北杉地区<br>
+            私立北杉高等学校
+          </div>
+          <p class="small">
+            最寄りの村営バス停から徒歩約12分。雨天時は村道の通行状況にご注意ください。
+          </p>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <div class="side-title">連携機関</div>
+        <div class="side-content">
+          <p class="small">
+            定期健康診断および保健指導は、地域医療機関の協力のもと実施しています。
+          </p>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    このサイトは架空の学校サイトです。実在の人物・団体・地名・学校とは関係ありません。
+  </footer>
+
+  <div id="medicalModal" class="modal-bg">
+    <div class="modal">
+      <div class="modal-head">
+        <h2>健康診断結果 照会</h2>
+        <button class="close" onclick="closeMedicalModal()">×</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="muted">
+          2026年度 三年生健康診断結果を確認します。生徒氏名と学籍番号を入力してください。
+        </p>
+
+        <div class="hint">
+          学籍番号は「入学年＋誕生日」の8桁で入力してください。<br>
+          例：2024年入学、6月17日生まれの場合 → 20240617
+        </div>
+
+        <div class="form-row">
+          <label for="studentName">生徒氏名</label>
+          <input id="studentName" placeholder="例：北杉 花子">
+        </div>
+
+        <div class="form-row">
+          <label for="studentId">学籍番号</label>
+          <input id="studentId" placeholder="例：20240617">
+        </div>
+
+        <div class="modal-actions">
+          <button class="cancel-btn" onclick="closeMedicalModal()">閉じる</button>
+          <button class="submit-btn" onclick="checkMedical()">照会する</button>
+        </div>
+
+        <div id="medicalError" class="error">
+          入力された情報に一致する記録は見つかりませんでした。
+        </div>
+
+        <div id="medicalResult" class="medical-result">
+          <h3>健康診断結果</h3>
+          <p class="small">私立北杉高等学校　保健室管理資料</p>
+
+          <table class="medical-table">
+            <tr>
+              <th>氏名</th>
+              <td>杉谷 遥</td>
+            </tr>
+            <tr>
+              <th>学籍番号</th>
+              <td>20240617</td>
+            </tr>
+            <tr>
+              <th>学年</th>
+              <td>三年</td>
+            </tr>
+            <tr>
+              <th>実施日</th>
+              <td>2026年5月16日</td>
+            </tr>
+            <tr>
+              <th>身長・体重</th>
+              <td>記録済</td>
+            </tr>
+            <tr>
+              <th>視力・聴力</th>
+              <td>日常生活に支障なし</td>
+            </tr>
+            <tr>
+              <th>血液検査</th>
+              <td>再確認項目あり</td>
+            </tr>
+            <tr>
+              <th>備考</th>
+              <td>
+                本人より睡眠不足、耳鳴り、山中での強い不安感について申告あり。<br>
+                必要に応じて連携医療機関での再検査を案内すること。
+              </td>
+            </tr>
+            <tr>
+              <th>確認担当</th>
+              <td>榊病院　学校健診担当</td>
+            </tr>
+          </table>
+
+          <div class="stamp">要経過観察</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function schoolSearch(){
+      const q=document.getElementById('schoolQ').value.trim();
+      const r=document.getElementById('schoolResults');
+
+      if(!q){
+        r.innerHTML='<p class="muted">検索ワードを入力してください。</p>';
+        return;
+      }
+
+      if(q.includes('杣木') || q.includes('真白') || q.includes('杣木 真白') || q.includes('杣木真白')){
+        r.innerHTML=`
+          <div class="result">
+            <a href="mashiro.html">杣木真白　過年度在籍記録</a>
+            <div class="url">kitasugi-high.example/archive/student/mashiro</div>
+            <div class="desc">
+              2016年度の在籍生徒に関する校内保存記録。現在は通常公開されていません。
+            </div>
+          </div>
+        `;
+      }else{
+        r.innerHTML='<p class="muted">該当する検索結果はありません。</p>';
+      }
+    }
+
+    function openMedicalModal(){
+      document.getElementById('medicalModal').classList.add('show');
+      document.getElementById('medicalError').style.display='none';
+      document.getElementById('medicalResult').style.display='none';
+    }
+
+    function closeMedicalModal(){
+      document.getElementById('medicalModal').classList.remove('show');
+    }
+
+    function checkMedical(){
+      const name=document.getElementById('studentName').value.trim().replace(/\s+/g,'');
+      const id=document.getElementById('studentId').value.trim();
+      const error=document.getElementById('medicalError');
+      const result=document.getElementById('medicalResult');
+
+      if(name === '杉谷遥' && id === '20240617'){
+        error.style.display='none';
+        result.style.display='block';
+      }else{
+        result.style.display='none';
+        error.style.display='block';
+      }
+    }
+
+    document.getElementById('medicalModal').addEventListener('click',function(e){
+      if(e.target === this){
+        closeMedicalModal();
+      }
+    });
+  </script>
+</body>
+</html>
