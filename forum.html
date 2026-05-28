@@ -1419,6 +1419,19 @@ a:hover{text-decoration:underline;}
     <button class="modal-close" onclick="closeSearchResult()">閉じる</button>
   </div>
 </div>
+  <div class="search-result-mask" id="suginariSearchResultMask" onclick="closeSuginariSearchResult()">
+  <div class="search-result-card" onclick="event.stopPropagation()">
+    <div class="search-result-title">知新で検索</div>
+    <div class="search-result-desc">「杉鳴様」に一致する投稿が見つかりました。</div>
+
+    <a class="search-result-item" href="suginari-sama.html">
+      <div class="search-result-url">chishin.local/kaidan/20260422-tamashi123</div>
+      <div class="search-result-item-title">杉鳴様って本当にいる神様なんですか？</div>
+    </a>
+
+    <button class="modal-close" onclick="closeSuginariSearchResult()">閉じる</button>
+  </div>
+</div>
 
 <div class="profile-mask" id="profileMask" onclick="closeProfile()">
   <div class="profile-card" onclick="event.stopPropagation()">
@@ -1497,6 +1510,17 @@ function fakeSearch(){
   const v = document.getElementById("siteSearch").value.trim();
   if(!v) return;
 
+  if(v.includes("杉鳴様") || v.includes("杉鳴") || v.includes("神様")){
+    openSuginariSearchResult();
+  }else if(v.includes("巡山祭") || v.includes("神隠し") || v.includes("神隱")){
+    openSearchResult();
+  }else{
+    alert("該当する投稿は見つかりませんでした。");
+  }
+}
+  const v = document.getElementById("siteSearch").value.trim();
+  if(!v) return;
+
   if(v.includes("巡山祭") || v.includes("神隠し") || v.includes("神隱")){
     openSearchResult();
   }else{
@@ -1554,6 +1578,13 @@ function openSearchResult(){
 
 function closeSearchResult(){
   document.getElementById("searchResultMask").classList.remove("show");
+}
+  function openSuginariSearchResult(){
+  document.getElementById("suginariSearchResultMask").classList.add("show");
+}
+
+function closeSuginariSearchResult(){
+  document.getElementById("suginariSearchResultMask").classList.remove("show");
 }
 
 function openProfile(){
