@@ -1518,15 +1518,6 @@ function fakeSearch(){
     alert("該当する投稿は見つかりませんでした。");
   }
 }
-  const v = document.getElementById("siteSearch").value.trim();
-  if(!v) return;
-
-  if(v.includes("巡山祭") || v.includes("神隠し") || v.includes("神隱")){
-    openSearchResult();
-  }else{
-    alert("該当する投稿は見つかりませんでした。");
-  }
-}
 
 function showRegister(){
   alert("現在、システムメンテナンス中のため新規登録は停止されています。");
