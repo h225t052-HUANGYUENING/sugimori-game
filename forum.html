@@ -725,6 +725,250 @@ a:hover{text-decoration:underline;}
   color:#fff;
 }
 
+
+.profile-mask,
+.post-mask,
+.search-result-mask{
+  position:fixed;
+  inset:0;
+  background:rgba(17,24,39,.62);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+  padding:20px;
+}
+
+.profile-mask.show,
+.post-mask.show,
+.search-result-mask.show{
+  display:flex;
+}
+
+.profile-card,
+.post-card,
+.search-result-card{
+  width:min(640px,100%);
+  max-height:88vh;
+  overflow:auto;
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 18px 50px rgba(0,0,0,.22);
+  padding:22px;
+}
+
+.profile-head{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding-bottom:16px;
+  border-bottom:1px solid #eef1f4;
+  margin-bottom:16px;
+}
+
+.profile-avatar{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#eef5ff;
+  color:#1772f6;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.profile-name{
+  font-size:19px;
+  font-weight:900;
+}
+
+.profile-desc{
+  color:#7b8794;
+  font-size:12px;
+  margin-top:2px;
+}
+
+.profile-section-title,
+.post-section-title{
+  font-size:13px;
+  color:#7b8794;
+  font-weight:800;
+  margin:14px 0 8px;
+}
+
+.profile-post{
+  display:block;
+  border:1px solid #e1e7ef;
+  border-radius:14px;
+  padding:13px 14px;
+  background:#fbfcfd;
+  cursor:pointer;
+}
+
+.profile-post:hover{
+  text-decoration:none;
+  border-color:#cbd7e6;
+  box-shadow:0 4px 12px rgba(35,52,85,.08);
+}
+
+.profile-post-title{
+  color:#1a0dab;
+  font-size:15px;
+  font-weight:800;
+  line-height:1.55;
+}
+
+.profile-post-meta{
+  color:#8a96a3;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.search-result-title{
+  font-size:19px;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.search-result-desc{
+  color:#7b8794;
+  font-size:13px;
+  line-height:1.7;
+  margin-bottom:14px;
+}
+
+.search-result-item{
+  display:block;
+  border-left:3px solid var(--blue);
+  padding:10px 0 10px 13px;
+  margin:10px 0;
+  background:#fbfcfd;
+  cursor:pointer;
+}
+
+.search-result-item-title{
+  color:#1a0dab;
+  font-size:16px;
+  font-weight:800;
+  line-height:1.55;
+}
+
+.search-result-url{
+  color:#177245;
+  font-size:12px;
+  margin-bottom:2px;
+}
+
+.post-title{
+  font-size:22px;
+  line-height:1.45;
+  font-weight:900;
+  margin:0 0 8px;
+}
+
+.post-meta{
+  color:#8a96a3;
+  font-size:12px;
+  margin-bottom:16px;
+}
+
+.post-body{
+  color:#2f3842;
+  font-size:15px;
+  line-height:1.9;
+}
+
+.post-body p{
+  margin:0 0 12px;
+}
+
+.deleted-post{
+  text-align:center;
+  padding:50px 20px;
+  color:#7b8794;
+  font-size:18px;
+  font-weight:900;
+}
+
+.modal-close{
+  width:100%;
+  border:0;
+  border-top:1px solid #e4e9ef;
+  background:#fff;
+  color:var(--blue);
+  padding:13px;
+  margin:18px -22px -22px;
+  width:calc(100% + 44px);
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.account-icon.logged-in{
+  border:0;
+  cursor:pointer;
+  font-family:inherit;
+}
+
+.login-input + .login-input{
+  margin-top:0;
+}
+
+
+.profile-info-grid{
+  display:grid;
+  gap:9px;
+  margin:10px 0 18px;
+}
+
+.profile-info-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  padding:10px 12px;
+  background:#f8fafc;
+  border:1px solid #eef1f4;
+  border-radius:12px;
+  font-size:13px;
+}
+
+.profile-info-row span:first-child{
+  color:#7b8794;
+  flex-shrink:0;
+}
+
+.profile-info-row span:last-child{
+  color:#1f2328;
+  font-weight:800;
+  text-align:right;
+}
+
+.festival-deleted-mark{
+  margin-top:18px;
+  padding:18px;
+  border:1px dashed #d7dee8;
+  border-radius:14px;
+  background:#f8fafc;
+  color:#7b8794;
+  font-size:16px;
+  font-weight:900;
+  text-align:center;
+}
+
+.festival-return{
+  display:inline-block;
+  margin-bottom:12px;
+  color:#5f6b78;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.festival-return:hover{
+  text-decoration:underline;
+}
+
 @media(max-width:860px){
   .page{
     display:block;
@@ -812,10 +1056,10 @@ a:hover{text-decoration:underline;}
         </div>
 
         <div class="question-meta">
-          <span>2026/04/17 投稿</span>
-          <span>閲覧 12,408</span>
-          <span>回答 12</span>
-          <span>コメント 57</span>
+          <span>2026/06/03 投稿</span>
+          <span>閲覧 8</span>
+          <span>回答 4</span>
+          <span>コメント 6</span>
           <span>キャッシュ表示</span>
         </div>
 
@@ -864,7 +1108,7 @@ a:hover{text-decoration:underline;}
     </section>
 
     <div class="answer-header">
-      <div class="answer-count">12件の回答</div>
+      <div class="answer-count">4件の回答</div>
       <div class="sorts">
         <span class="active">おすすめ順</span>
         <span>新しい順</span>
@@ -1113,9 +1357,9 @@ a:hover{text-decoration:underline;}
     <section class="side-card">
       <div class="side-title">この質問の状態</div>
       <div class="status-grid">
-        <div class="status-row"><span>閲覧数</span><span>12,408</span></div>
-        <div class="status-row"><span>回答</span><span>12</span></div>
-        <div class="status-row"><span>コメント</span><span>57</span></div>
+        <div class="status-row"><span>閲覧数</span><span>8</span></div>
+        <div class="status-row"><span>回答</span><span>4</span></div>
+        <div class="status-row"><span>コメント</span><span>6</span></div>
         <div class="status-row"><span>状態</span><span>キャッシュ</span></div>
       </div>
     </section>
@@ -1132,9 +1376,9 @@ a:hover{text-decoration:underline;}
     <section class="side-card">
       <div class="side-title">閲覧中のユーザー</div>
       <div class="side-list">
-        <div class="side-item">ゲスト 12人</div>
-        <div class="side-item">ログインユーザー 3人</div>
-        <div class="side-item">非表示ユーザー 1人</div>
+        <div class="side-item">ゲスト 5人</div>
+        <div class="side-item">ログインユーザー 1人</div>
+        <div class="side-item">非表示ユーザー 0人</div>
       </div>
     </section>
 
@@ -1161,6 +1405,54 @@ a:hover{text-decoration:underline;}
   </div>
 </div>
 
+
+<div class="search-result-mask" id="searchResultMask" onclick="closeSearchResult()">
+  <div class="search-result-card" onclick="event.stopPropagation()">
+    <div class="search-result-title">知新で検索</div>
+    <div class="search-result-desc">「巡山祭」に一致する投稿が見つかりました。</div>
+
+    <div class="search-result-item" onclick="openDeletedFestivalPost()">
+      <div class="search-result-url">chishin.local/deleted/20160425-maki</div>
+      <div class="search-result-item-title">巡山祭の知られていない部分と神隠しの真相（削除済み）</div>
+    </div>
+
+    <button class="modal-close" onclick="closeSearchResult()">閉じる</button>
+  </div>
+</div>
+
+<div class="profile-mask" id="profileMask" onclick="closeProfile()">
+  <div class="profile-card" onclick="event.stopPropagation()">
+    <div class="profile-head">
+      <div class="profile-avatar">m</div>
+      <div>
+        <div class="profile-name">maki</div>
+        <div class="profile-desc">個人認証 / 過去の投稿</div>
+      </div>
+    </div>
+
+    <div class="profile-section-title">個人認証</div>
+    <div class="profile-info-grid">
+      <div class="profile-info-row"><span>氏名</span><span>高城 真紀</span></div>
+      <div class="profile-info-row"><span>年齢</span><span>40歳</span></div>
+      <div class="profile-info-row"><span>生年</span><span>1986年</span></div>
+      <div class="profile-info-row"><span>出生地</span><span>杉守村</span></div>
+      <div class="profile-info-row"><span>現住所</span><span>京都市区</span></div>
+    </div>
+
+    <div class="profile-section-title">投稿履歴</div>
+    <a class="profile-post" href="#" onclick="openSecretFestivalPost();return false;">
+      <div class="profile-post-title">巡山祭の知られていない部分と神隠しの真相（削除済み）</div>
+      <div class="profile-post-meta">2016/04/25 投稿・現在は通常閲覧不可</div>
+    </a>
+
+    <button class="modal-close" onclick="closeProfile()">閉じる</button>
+  </div>
+</div>
+
+<div class="post-mask" id="postMask" onclick="closePost()">
+  <div class="post-card" id="postCard" onclick="event.stopPropagation()"></div>
+</div>
+
 <div class="login-mask" id="loginMask" onclick="closeLogin()">
   <div class="login-card" onclick="event.stopPropagation()">
     <div class="login-title">知新にログイン</div>
@@ -1169,7 +1461,8 @@ a:hover{text-decoration:underline;}
       投稿・通報・一部の古い回答の表示にはログインが必要です。
     </div>
 
-    <input class="login-input" id="loginName" placeholder="ユーザー名" onkeydown="if(event.key==='Enter')login()">
+    <input class="login-input" id="loginName" placeholder="ユーザー名" autocomplete="username">
+    <input class="login-input" id="loginPassword" type="password" placeholder="パスワード" autocomplete="current-password" onkeydown="if(event.key==='Enter')login()">
     <div class="login-error" id="loginError">アカウントが見つかりません。</div>
 
     <div class="login-buttons">
@@ -1191,10 +1484,22 @@ function closeImage(){
   document.getElementById("modalImage").src = "";
 }
 
+let isLoggedIn = false;
+let originalMainHTML = "";
+
+window.addEventListener("DOMContentLoaded", function(){
+  originalMainHTML = document.querySelector(".main").innerHTML;
+});
+
 function fakeSearch(){
   const v = document.getElementById("siteSearch").value.trim();
   if(!v) return;
-  alert("このキャッシュページでは検索機能を利用できません。");
+
+  if(v.includes("巡山祭") || v.includes("神隠し") || v.includes("神隱")){
+    openSearchResult();
+  }else{
+    alert("該当する投稿は見つかりませんでした。");
+  }
 }
 
 function showRegister(){
@@ -1204,6 +1509,8 @@ function showRegister(){
 function openLogin(){
   document.getElementById("loginMask").classList.add("show");
   document.getElementById("loginError").style.display = "none";
+  document.getElementById("loginName").value = "";
+  document.getElementById("loginPassword").value = "";
   setTimeout(()=>{
     document.getElementById("loginName").focus();
   },50);
@@ -1215,16 +1522,21 @@ function closeLogin(){
 
 function login(){
   const name = document.getElementById("loginName").value.trim();
+  const pass = document.getElementById("loginPassword").value.trim();
   const err = document.getElementById("loginError");
 
-  if(name === "maki"){
+  if(name === "maki" && pass === "20080617"){
+    isLoggedIn = true;
     document.getElementById("accountArea").innerHTML = `
-      <div class="account-icon">m</div>
+      <button class="account-icon logged-in" onclick="openProfile()" title="プロフィール">m</button>
       <div>ログイン中：maki</div>
     `;
     closeLogin();
     alert("ログインしました。");
+  }else if(name === "maki" && pass !== "20080617"){
+    alert("提示：🍰");
   }else{
+    err.textContent = "アカウントが見つかりません。";
     err.style.display = "block";
   }
 }
@@ -1232,6 +1544,151 @@ function login(){
 function needLogin(){
   alert("この操作にはログインが必要です。");
   openLogin();
+}
+
+function openSearchResult(){
+  document.getElementById("searchResultMask").classList.add("show");
+}
+
+function closeSearchResult(){
+  document.getElementById("searchResultMask").classList.remove("show");
+}
+
+function openProfile(){
+  if(!isLoggedIn){
+    openLogin();
+    return;
+  }
+  document.getElementById("profileMask").classList.add("show");
+}
+
+function closeProfile(){
+  document.getElementById("profileMask").classList.remove("show");
+}
+
+function openDeletedFestivalPost(){
+  closeSearchResult();
+  renderFestivalPost(isLoggedIn);
+}
+
+function openSecretFestivalPost(){
+  closeSearchResult();
+  closeProfile();
+  renderFestivalPost(true);
+}
+
+function restoreMainThread(){
+  document.querySelector(".main").innerHTML = originalMainHTML;
+  window.scrollTo(0,0);
+}
+
+function festivalBodyHTML(canRead){
+  if(!canRead){
+    return `<div class="festival-deleted-mark">この投稿は削除されました。</div>`;
+  }
+
+  return `
+    <div class="answer-text">
+      <p>この投稿は、削除される前に残しておきます。村の外から見えている「巡山祭」と、実際に村の中で行われていることは同じではありません。</p>
+      <p>表向きの巡山祭は、杉鳴神社で神に舞を奉納し、その年の酒を仕込む祭りだと説明されています。観光案内や村の人が話す内容も、ほとんどはそこまでです。けれど実際には、そのあとにもう一つ、外の人にはほとんど語られない段取りがあります。</p>
+
+      <p><strong>巡山。</strong></p>
+
+      <p>毎年、まだ巡山をしたことのない村人が一人選ばれます。その人は朝の七時ごろに山へ入り、杉守山の中にある複数の小さな神龕を順番に回ります。古い葉や泥を払って、神龕を掃除し、祭りで仕込まれた酒を供える。戻ってくるのは、だいたい夕方五時ごろです。村ではそれを「山に挨拶するだけ」と言いますが、半日もかかる道のりを一人で歩かせる理由を、誰もはっきり説明しようとしません。</p>
+
+      <p>私がこの件に関わった時点で、すでに過去の「神隠し」は村の内部だけの噂ではありませんでした。調査を引き継いだあと、榊隆文の名前が何度も浮かびました。榊病院、健康診断、巡山祭の準備、そして消えた人間の記録。その線は見えていたのに、村の人たちはほとんど何も話そうとしませんでした。</p>
+
+      <p>聞き込みに行けば、急に仕事を理由に席を外される。関係者に会おうとすれば、先に誰かから連絡が回っている。祭りの資料は「古いものだから残っていない」と言われ、神社の記録は「外部に見せるものではない」と拒まれる。こちらが警察関係者だと分かっていても、村全体が一つの壁のようになっていました。</p>
+
+      <p>それでも私は、一度だけ山に入りました。巡山の経路にある神龕を自分で確認するためです。そのうち一つの神龕の下には、小さな柜のような空間がありました。そこに、数本の髪の毛が残っていました。古いものではありましたが、自然にそこへ落ちたとは思えない位置でした。</p>
+
+      <p>後の照合で、その髪は<span class="clue">杣木 真白</span>のものだと分かりました。彼女は当時「神隠しに遭った」とされていた人物です。村では山で迷った、杉鳴様に呼ばれた、そういう曖昧な言い方ばかりされていました。</p>
+
+      <p>さらに気になったのは、真白が消えてから数日後、榊隆文が山の一部の木を伐り、新しい建物を建て始めたことです。偶然と言い切るにはタイミングが悪すぎました。けれど、髪の毛だけでは足りなかった。神龕に残っていたものが、いつ、誰によって置かれたのかを証明できなかった。村の人間は誰も証言しなかった。</p>
+
+      <p>榊隆文に辿り着けると思ったところで、調査は止まりました。証拠が足りない。それだけの理由で。</p>
+
+      <p>もしこれを読んでいる人がいるなら、巡山祭をただの祭りだと思わないでください。あの山には、村の人間が見ないふりをしているものがあります。そしてそれは、まだ終わっていません。</p>
+    </div>
+    <div class="festival-deleted-mark">この投稿は削除されました。</div>
+  `;
+}
+
+function renderFestivalPost(canRead){
+  document.querySelector(".main").innerHTML = `
+    <a class="festival-return" onclick="restoreMainThread()">← 元の投稿へ戻る</a>
+
+    <div class="notice">
+      このページは Moorii 検索結果から開かれた外部掲示板のキャッシュです。投稿内容の一部は削除・編集されている場合があります。
+    </div>
+
+    <section class="card">
+      <div class="question">
+        <div class="topic-label">質問・ローカル掲示板</div>
+
+        <h1 class="title">巡山祭の知られていない部分と神隠しの真相（削除済み）</h1>
+
+        <div class="tags">
+          <span class="tag">巡山祭</span>
+          <span class="tag">神隠し</span>
+          <span class="tag">削除済み</span>
+        </div>
+
+        <div class="question-meta">
+          <span>2016/04/25 投稿</span>
+          <span>投稿者：maki</span>
+          <span>閲覧 3,126</span>
+          <span>回答 0</span>
+          <span>コメント 0</span>
+          <span>キャッシュ表示</span>
+        </div>
+
+        <div class="question-body">
+          <div class="question-author">
+            <div class="author-left">
+              <div class="avatar gray">m</div>
+              <div>
+                <div class="user-name">maki</div>
+                <div class="user-desc">投稿者・2016/04/25 23:41</div>
+              </div>
+            </div>
+            <button class="follow-btn" onclick="needLogin()">フォロー</button>
+          </div>
+
+          ${festivalBodyHTML(canRead)}
+        </div>
+
+        <div class="question-actions">
+          <div class="action-left">
+            <button class="q-btn" onclick="needLogin()">回答する</button>
+            <button class="q-btn" onclick="needLogin()">コメント</button>
+            <button class="q-btn" onclick="alert('このキャッシュページでは共有できません。')">シェア</button>
+          </div>
+          <button class="report-link" onclick="needLogin()">通報</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="answer-header">
+      <div class="answer-count">0件の回答</div>
+      <div class="sorts">
+        <span class="active">おすすめ順</span>
+        <span>新しい順</span>
+      </div>
+    </div>
+
+    <section class="answer-card">
+      <article class="answer">
+        <div class="deleted">この投稿には現在、表示できる回答がありません。</div>
+      </article>
+    </section>
+  `;
+  window.scrollTo(0,0);
+}
+
+function closePost(){
+  const postMask = document.getElementById("postMask");
+  if(postMask){ postMask.classList.remove("show"); }
 }
 </script>
 
