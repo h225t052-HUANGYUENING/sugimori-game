@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRUE END - 罪を終わらせるために</title>
+<style>
+:root{
+  --text:#1f2937;
+  --muted:#667085;
+  --blue:#2563eb;
+  --soft-blue:#eff6ff;
+  --line:#dbeafe;
+  --green:#06c755;
+  --bg:#dfe9f3;
+  --bubble-left:#ffffff;
+  --bubble-right:#9de88f;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  min-height:100vh;
+  background:#fff;
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+  line-height:1.95;
+}
+a{color:inherit;text-decoration:none;}
+.wrap{
+  width:min(820px,100%);
+  margin:0 auto;
+  padding:70px 22px 76px;
+}
+.nav{
+  display:flex;
+  justify-content:flex-end;
+  margin-bottom:36px;
+}
+.nav a,
+.actions a{
+  border:1px solid var(--line);
+  color:#1d4ed8;
+  background:#fff;
+  border-radius:999px;
+  padding:8px 16px;
+  font-size:13px;
+}
+.kicker{
+  color:var(--blue);
+  letter-spacing:.22em;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:10px;
+}
+h1{
+  margin:0 0 42px;
+  font-size:38px;
+  line-height:1.35;
+  color:#111827;
+  letter-spacing:.02em;
+}
+.article{
+  font-size:16px;
+}
+.article p{
+  margin:0 0 26px;
+}
+.article .lead{
+  font-size:17px;
+  color:#111827;
+}
+.keyline{
+  margin:40px 0;
+  padding:24px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  color:#0f172a;
+}
+.keyline strong{
+  display:block;
+  color:#1e3a8a;
+  font-size:22px;
+  margin-bottom:10px;
+}
+.record{
+  margin:42px 0;
+  padding:20px 22px;
+  border-left:5px solid var(--blue);
+  background:#f8fbff;
+  color:#344054;
+  font-size:14px;
+  line-height:1.9;
+}
+.record-title{
+  color:#1e40af;
+  font-weight:900;
+  letter-spacing:.08em;
+  font-size:12px;
+  margin-bottom:10px;
+}
+.chat-block{
+  margin:96px auto 0;
+}
+.chat-caption{
+  width:min(430px,100%);
+  margin:0 auto 14px;
+  color:#667085;
+  font-size:12px;
+}
+.phone{
+  width:min(430px,100%);
+  min-height:640px;
+  margin:0 auto;
+  background:var(--bg);
+  box-shadow:0 0 28px rgba(0,0,0,.14);
+  display:flex;
+  flex-direction:column;
+  border-radius:26px;
+  overflow:hidden;
+  border:1px solid #d7dde5;
+}
+.header{
+  min-height:68px;
+  background:#27323d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:9px 14px;
+  z-index:10;
+}
+.back{
+  font-size:20px;
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  opacity:.95;
+}
+.back:hover{background:rgba(255,255,255,.12);}
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:0 0 0 2px rgba(255,255,255,.18);
+  flex-shrink:0;
+}
+.avatar img,
+.mini-avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+.info{min-width:0;flex:1;}
+.name{font-weight:700;font-size:15px;line-height:1.2;}
+.status{font-size:11px;color:rgba(255,255,255,.72);margin-top:3px;}
+.menu{font-size:22px;color:rgba(255,255,255,.75);padding:0 4px;}
+.chat{
+  flex:1;
+  padding:18px 12px 20px;
+  background:
+    linear-gradient(rgba(220,231,242,.88),rgba(220,231,242,.88)),
+    repeating-linear-gradient(45deg,transparent,transparent 16px,rgba(255,255,255,.22) 16px,rgba(255,255,255,.22) 17px);
+}
+.day{text-align:center;margin:10px 0 18px;}
+.day span{
+  display:inline-block;
+  background:rgba(86,101,116,.22);
+  color:#fff;
+  font-size:11px;
+  padding:4px 10px;
+  border-radius:999px;
+}
+.system{
+  text-align:center;
+  color:#778491;
+  font-size:12px;
+  margin:14px auto;
+  max-width:88%;
+  line-height:1.7;
+}
+.system span{
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(180,190,200,.58);
+  border-radius:999px;
+  padding:6px 12px;
+  display:inline-block;
+}
+.row{
+  display:flex;
+  margin:8px 0;
+  gap:7px;
+  align-items:flex-end;
+}
+.row.right{justify-content:flex-end;}
+.mini-avatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:#fff;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.bubble{
+  max-width:74%;
+  padding:9px 12px;
+  border-radius:17px;
+  line-height:1.55;
+  font-size:14px;
+  position:relative;
+  word-break:break-word;
+  box-shadow:0 1px 1px rgba(0,0,0,.04);
+}
+.left .bubble{
+  background:var(--bubble-left);
+  border-bottom-left-radius:5px;
+}
+.right .bubble{
+  background:var(--bubble-right);
+  border-bottom-right-radius:5px;
+}
+.meta{
+  font-size:10px;
+  color:#65717d;
+  margin:0 3px 2px;
+  white-space:nowrap;
+}
+.read{
+  display:block;
+  text-align:right;
+  font-size:10px;
+  color:#65717d;
+  line-height:1.1;
+}
+.important{
+  border-left:3px solid #2563eb;
+  padding-left:10px;
+}
+.silent-gap{height:220px;}
+.inputbar{
+  background:#f7f8fa;
+  border-top:1px solid var(--line);
+  padding:10px 10px 14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.input-icon{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#e8ecef;
+  color:#7b8794;
+  font-size:15px;
+  flex-shrink:0;
+}
+.draft{
+  flex:1;
+  min-height:38px;
+  background:#fff;
+  border:1px solid #dde2e8;
+  border-radius:20px;
+  padding:8px 13px;
+  color:#9aa3ad;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+}
+.send{
+  border:0;
+  background:#d9dee5;
+  color:#8b96a3;
+  border-radius:999px;
+  padding:8px 11px;
+  font-size:12px;
+  font-weight:700;
+}
+.footer-note{
+  padding:14px 16px 18px;
+  text-align:center;
+  font-size:11px;
+  line-height:1.7;
+  color:#8a96a3;
+  background:#f7f8fa;
+}
+.end-title{
+  margin-top:72px;
+  text-align:center;
+  color:#1e3a8a;
+  letter-spacing:.18em;
+  font-weight:900;
+  font-size:13px;
+}
+.end-sub{
+  text-align:center;
+  color:#111827;
+  font-size:26px;
+  font-weight:900;
+  margin-top:10px;
+}
+.actions{
+  margin-top:38px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.site-footer{
+  margin-top:54px;
+  text-align:center;
+  color:#98a2b3;
+  font-size:11px;
+}
+@media(max-width:640px){
+  .wrap{padding:44px 18px 60px;}
+  h1{font-size:30px;margin-bottom:34px;}
+  .article{font-size:15px;}
+  .phone{border-radius:20px;}
+  .silent-gap{height:180px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav"><a href="index.html">Mooriiへ戻る</a></div>
+
+  <div class="kicker">TRUE END</div>
+  <h1>罪を終わらせるために</h1>
+
+  <article class="article">
+    <p class="lead">あなたは、何も言わなかった。</p>
+
+    <p>知っていることを話せば、杉谷静は壊れる。<br>
+    一人で山へ向かえば、きっと戻れない。</p>
+
+    <p>だからあなたは、ただ会話を続けた。</p>
+
+    <p>遥の昔話。<br>
+    杉守村の暮らし。<br>
+    杉鳴神社のこと。<br>
+    十年前の噂。</p>
+
+    <p>杉谷静は、ときおり言葉を止めた。<br>
+    それでもあなたは、沈黙を埋めるように問い続けた。</p>
+
+    <div class="keyline">
+      <strong>三十分ほど経った頃だった。</strong>
+      遠くから、かすかな音が聞こえた。<br>
+      最初は風の音に聞こえた。<br><br>
+      けれど、違った。<br>
+      警笛だった。
+    </div>
+
+    <p>杉谷静の顔から、血の気が引いた。</p>
+
+    <p>下山道はすでに封鎖されていた。<br>
+    村へ続く道にも、神社へ向かう道にも、警察車両が停まっている。</p>
+
+    <p>高城真紀は、息を切らしながらあなたの前に立った。</p>
+
+    <p>彼女は、遥がもう戻らない可能性も分かっていた。<br>
+    それでも、ここで終わらせなければならないと思っていた。</p>
+
+    <div class="record">
+      <div class="record-title">捜査記録</div>
+      榊病院の関係者が任意同行を求められた。<br>
+      杉鳴神社の奥にある建物には、捜索令状が出された。<br>
+      十年前の記録と、消された通報履歴も押収された。
+    </div>
+
+    <p>その夜、遥はまだ見つからなかった。</p>
+
+    <p>けれど、初めて、<br>
+    誰かが彼女の不在を「神隠し」ではなく、<br>
+    事件として記録した。</p>
+  </article>
+
+  <section class="chat-block">
+    <div class="chat-caption">トーク — 高城真紀</div>
+
+    <div class="phone">
+      <header class="header">
+        <a class="back" href="takashiro_profile.html">‹</a>
+        <div class="avatar">
+          <img src="maki_eagle.png" alt="高城真紀">
+        </div>
+        <div class="info">
+          <div class="name">高城 真紀</div>
+          <div class="status">オンライン</div>
+        </div>
+        <div class="menu">⋯</div>
+      </header>
+
+      <main class="chat">
+        <div class="day"><span>今日</span></div>
+
+        <div class="row left">
+          <div class="mini-avatar">
+            <img src="maki_eagle.png" alt="高城真紀">
+          </div>
+          <div class="bubble important">
+            生きていてくれて、ありがとうございます。<br>
+            ここから先は、私たちの仕事です。
+          </div>
+          <div class="meta">22:47</div>
+        </div>
+
+        <div class="silent-gap"></div>
+
+        <div class="system">
+          <span>三十分後</span>
+        </div>
+
+        <div class="row left">
+          <div class="mini-avatar">
+            <img src="maki_eagle.png" alt="高城真紀">
+          </div>
+          <div class="bubble">
+            ……見つけてくれて、ありがとう。
+          </div>
+          <div class="meta">23:17</div>
+        </div>
+      </main>
+
+      <div class="inputbar">
+        <div class="input-icon">＋</div>
+        <div class="draft">メッセージを入力</div>
+        <button class="send">送信</button>
+      </div>
+
+      <div class="footer-note">
+        このゲームは完全なフィクションです。実在の人物・団体・地名・事件などとは一切関係ありません。
+      </div>
+    </div>
+  </section>
+
+  <div class="end-title">TRUE END</div>
+  <div class="end-sub">罪を終わらせるために</div>
+
+  <div class="actions">
+    <a href="takashiro_chat.html">選択前に戻る</a>
+    <a href="index.html">Mooriiへ戻る</a>
+  </div>
+
+  <div class="site-footer">
+    このゲームは完全なフィクションです。実在の人物・団体・地名・事件などとは一切関係ありません。
+  </div>
+</div>
+</body>
+</html>
