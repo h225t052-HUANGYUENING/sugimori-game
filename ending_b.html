@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BAD END 2 — 手を伸ばす前に</title>
+<style>
+:root{
+  --bg:#07100d;
+  --panel:#101815;
+  --panel2:#0b1210;
+  --text:#e4e8df;
+  --muted:#98a39b;
+  --line:#26332d;
+  --green:#2f6b50;
+  --green2:#7ea891;
+  --red:#8b2635;
+  --paper:#ece8dd;
+  --ink:#202124;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(47,107,80,.28), transparent 34%),
+    linear-gradient(180deg,#050806 0%,#0d1512 48%,#050806 100%);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Yu Gothic UI",Meiryo,sans-serif;
+  line-height:1.9;
+}
+
+a{color:inherit;text-decoration:none;}
+
+.wrapper{
+  width:min(760px,100%);
+  margin:0 auto;
+  padding:48px 18px 56px;
+}
+
+.top-label{
+  color:var(--green2);
+  font-size:12px;
+  letter-spacing:.18em;
+  font-weight:800;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+h1{
+  margin:0 0 28px;
+  font-size:34px;
+  line-height:1.35;
+  letter-spacing:.03em;
+}
+
+.lead{
+  border-left:3px solid var(--green);
+  padding:4px 0 4px 16px;
+  color:#dce3d9;
+  font-size:15px;
+  margin:0 0 32px;
+}
+
+.scene{
+  background:rgba(16,24,21,.82);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:26px 24px;
+  box-shadow:0 12px 40px rgba(0,0,0,.28);
+  margin:0 0 28px;
+}
+
+.scene p{
+  margin:0 0 18px;
+}
+
+.scene p:last-child{margin-bottom:0;}
+
+.shrine-box{
+  margin:26px 0;
+  padding:20px 18px;
+  border-radius:14px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(126,168,145,.25);
+  color:#e8ece5;
+}
+
+.shrine-box .small{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.12em;
+  margin-bottom:8px;
+}
+
+.hit{
+  margin:24px 0;
+  padding:18px 18px;
+  border-radius:14px;
+  background:rgba(139,38,53,.12);
+  border:1px solid rgba(139,38,53,.36);
+  color:#f3e9e9;
+  font-weight:700;
+}
+
+.falling{
+  margin-top:24px;
+  color:#d5ddd2;
+  letter-spacing:.04em;
+}
+
+.news{
+  margin:34px 0;
+  background:var(--paper);
+  color:var(--ink);
+  border-radius:2px;
+  padding:26px 24px;
+  box-shadow:0 12px 38px rgba(0,0,0,.35);
+  position:relative;
+  overflow:hidden;
+}
+
+.news::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.18),transparent 30%,rgba(0,0,0,.035) 72%,transparent),
+    repeating-linear-gradient(0deg,transparent,transparent 7px,rgba(0,0,0,.018) 8px);
+  pointer-events:none;
+}
+
+.news-kicker{
+  position:relative;
+  color:#6b6f76;
+  font-size:12px;
+  border-bottom:1px solid #c9c4bb;
+  padding-bottom:8px;
+  margin-bottom:14px;
+}
+
+.news h2{
+  position:relative;
+  margin:0 0 14px;
+  font-size:22px;
+  line-height:1.45;
+}
+
+.news p{
+  position:relative;
+  margin:0 0 12px;
+  font-size:14px;
+  line-height:1.85;
+}
+
+.testimony{
+  position:relative;
+  margin-top:16px;
+  padding:14px 15px;
+  border-left:3px solid #767064;
+  background:rgba(255,255,255,.38);
+  font-size:13px;
+}
+
+.memo{
+  margin:34px 0 0;
+  padding:20px 18px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.ending{
+  margin-top:54px;
+  text-align:center;
+  border-top:1px solid var(--line);
+  padding-top:34px;
+}
+
+.end-label{
+  color:var(--green2);
+  font-size:13px;
+  letter-spacing:.22em;
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.end-title{
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.buttons{
+  margin-top:34px;
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:150px;
+  padding:11px 16px;
+  border-radius:999px;
+  border:1px solid #344139;
+  background:#111a16;
+  color:#d9dfd6;
+  font-size:13px;
+  font-weight:700;
+}
+
+.btn:hover{
+  background:#18241f;
+  text-decoration:none;
+}
+
+.footer{
+  margin-top:38px;
+  text-align:center;
+  color:#66736b;
+  font-size:11px;
+  line-height:1.7;
+}
+
+@media(max-width:560px){
+  .wrapper{padding-top:36px;}
+  h1{font-size:28px;}
+  .scene,.news{padding:22px 18px;}
+  .news h2{font-size:19px;}
+}
+</style>
+</head>
+<body>
+  <main class="wrapper">
+    <div class="top-label">BAD END 2</div>
+    <h1>手を伸ばす前に</h1>
+
+    <p class="lead">
+      あなたは、何も言わなかった。<br>
+      杉谷静の言葉を聞いたあとも、誰かを待つことはできなかった。
+    </p>
+
+    <section class="scene">
+      <p>遥は、まだどこかにいるかもしれない。</p>
+      <p>そう思うと、足は自然と杉守山へ向かっていた。</p>
+
+      <p>山道は思っていたよりも静かだった。鳥の声も、風の音も、途中から遠くなっていく。</p>
+      <p>スマートフォンの電波は、いつの間にか一本も立たなくなっていた。</p>
+
+      <div class="shrine-box">
+        <div class="small">杉守山中腹・祠付近</div>
+        木々の奥に、小さな祠があった。<br>
+        その奥に、古い木製の棚のようなものが見える。<br>
+        扉には、何度も開け閉めされたような傷が残っていた。
+      </div>
+
+      <p>ここだ、と思った。</p>
+      <p>理由はなかった。けれど、ここに遥へ続く何かがあると、あなたは確信していた。</p>
+
+      <p>指先が、取っ手に触れた。</p>
+
+      <div class="hit">その瞬間だった。</div>
+
+      <p>後頭部に、硬い衝撃が走った。</p>
+      <p>音が遅れて聞こえた。石が地面に落ちる音だった。</p>
+
+      <p>倒れ込む視界の端で、棚の隙間から、誰かがこちらを見ていた。</p>
+      <p>制服姿の少女。白い顔。開きかけた唇。</p>
+
+      <p>「……遥」</p>
+
+      <p>けれど、それはきっと幻だった。</p>
+
+      <p class="falling">次に感じたのは、<br>
+      冷たい風と、<br>
+      身体が宙に投げ出される感覚だけだった。</p>
+    </section>
+
+    <section class="news">
+      <div class="news-kicker">地域ニュース｜速報</div>
+      <h2>杉守山で転落事故　行方不明者を捜索中の大学生か</h2>
+      <p>杉守山の斜面下で、大学生とみられる人物が倒れているのが発見された。</p>
+      <p>警察は、足場の悪い山道で誤って転落した可能性があるとみて、詳しい状況を調べている。</p>
+      <p>大学生は、知人の行方を調べるため杉守村周辺を訪れていたとみられる。</p>
+
+      <div class="testimony">
+        近隣の医師・榊隆文氏は、<br>
+        「このあたりは道が崩れやすく、土地に慣れていない人が入るのは危険だ」<br>
+        と話している。
+      </div>
+    </section>
+
+    <section class="memo">
+      高城真紀が現場に到着した時、祠の周囲にはすでに規制線が張られていた。<br>
+      しかし、肝心の棚は空だった。<br>
+      土の上に残っていた血痕も、誰のものか判別できなかった。<br><br>
+      あなたが最後に見た少女が本当に遥だったのか、<br>
+      それを確かめる人は、もういない。
+    </section>
+
+    <section class="ending">
+      <div class="end-label">BAD END 2</div>
+      <div class="end-title">手を伸ばす前に</div>
+      <div class="buttons">
+        <a class="btn" href="maki_chat.html">選択前に戻る</a>
+        <a class="btn" href="index.html">Mooriiへ戻る</a>
+      </div>
+    </section>
+
+    <div class="footer">
+      このゲームは完全なフィクションです。実在の人物・団体・地名・事件などとは一切関係ありません。
+    </div>
+  </main>
+</body>
+</html>
