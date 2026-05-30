@@ -830,7 +830,7 @@
           if(r.exact){
             return r.keys.some(k=>q===k);
           }
-          return r.keys.some(k=>q.includes(k)||k.includes(q));
+          return r.keys.some(k=>q.includes(k));
         })
         .slice(0,3);
 
